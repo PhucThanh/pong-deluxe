@@ -1,0 +1,75 @@
+﻿  Animate.cpp
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(8,42): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(19,94): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(23,98): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(31,120): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(35,120): warning C4309: 'static_cast': truncation of constant value
+  Ball.cpp
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Animate.cpp(39,122): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(17,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(17,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(19,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(19,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(72,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(76,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(80,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Bar.cpp
+  Console.cpp
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Ball.cpp(84,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(67,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(67,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(101,37): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(101,63): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(104,29): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(104,55): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(121,37): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(121,63): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(124,29): warning C4309: 'static_cast': truncation of constant value
+  Game.cpp
+  Graphic.cpp
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Console.cpp(124,55): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Graphic.cpp(48,14): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Main.cpp
+  Menu.cpp
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Graphic.cpp(48,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(12,20): warning C4154: deletion of an array expression; conversion to pointer supplied
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(84,24): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(143,37): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(144,41): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(150,40): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(151,51): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(154,53): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(155,57): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(157,64): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(158,68): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(166,54): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(166,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(168,89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(168,138): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(171,54): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(171,49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(173,62): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(173,53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(174,66): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(174,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(175,66): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(175,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(176,77): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(176,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(177,81): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(177,76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(178,81): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(178,76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(182,89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(182,140): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(190,22): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(191,35): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(192,36): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(193,49): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(196,23): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(197,37): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(202,41): warning C4309: 'static_cast': truncation of constant value
+  Generating Code...
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(206,54): warning C4309: 'static_cast': truncation of constant value
+C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\18120215_18120225\Menu.cpp(67): warning C4715: 'Menu::update_Menu': not all control paths return a value
+  18120215_18120225.vcxproj -> C:\Users\ngocv\OneDrive\Máy tính\DO AN 2\pong-deluxe\x64\Debug\18120215_18120225.exe

@@ -27,9 +27,10 @@ Console::Console()
 	cfi.dwFontSize.Y = font_y;
 	cfi.FontFamily = FF_DONTCARE;
 	cfi.FontWeight = FW_NORMAL;
-	//Font chạy ổn định nhất: Lucida Console
+	//Font chạy ổn định nhất: 
+	//wcscpy_s(cfi.FaceName, L"Courier new");
 	wcscpy_s(cfi.FaceName, L"Lucida Console");
-	//wcscpy_s(cfi.FaceName, L"Consolas");
+	
 
 	//lấy con trỏ giữ màn hình
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -93,12 +94,12 @@ void Console::HideCursor()			//xoa dau con tro
 void Console::DrawConsole(int color)		//tao console
 {
 	ChangeColorText(color);					//chon mau console
-	for (int i = 0; i < console_width + 1; ++i)
-		cout << '_';						//ve bien tren
+	//For (int i = 0; i < console_width + 1; ++i)
+		//cout << '_';						//ve bien tren
 	for (int i = 0; i < console_height - 1 ; ++i)
 	{
 		cout << endl << static_cast<char>(219) << static_cast<char>(219);		//ve bien trai
-		for (int i = 0; i < console_width - 3; ++i)		//dua con tro den bien phai
+		for (int i = 0; i < console_width -3 ; ++i)		//dua con tro den bien phai
 			cout << ' ';
 		cout << static_cast<char>(219) << static_cast<char>(219);				//ve bien phai
 	}
