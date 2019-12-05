@@ -1,6 +1,7 @@
 ﻿#include "Menu.h"
 Menu::Menu()
 {
+	menu_title = "- MAIN MENU -";
 	select = 0;
 	menu_list[0] = " BREAKER GAME";
 	menu_list[1] = "PONG GAME";
@@ -14,12 +15,30 @@ Menu::~Menu()
 int Menu::run_Menu()// ham chinh goi chay menu
 {
 	//Intro();
-	while (GetKey() != ENTER)
+	input key = GetKey();;
+	int timeSinceBeginSnow = 0;
+	int timeSinceBeginMenu = 0;
+	while (key!=ENTER)
 	{
-		DrawMenu();
-		Sleep(70); //Toc do chuyen dong =0 se de bi lag
-		Graphic::Update();
-		update_Menu();
+		
+		key = GetKey();
+		current_time = GetTickCount();
+		if (current_time > timeSinceBeginSnow)
+		{
+			a.clear();
+			
+
+			a.draw_Snow();
+			
+			timeSinceBeginSnow = current_time +300;
+		}
+		if (current_time > timeSinceBeginMenu)
+		{
+			DrawMenu();
+			update_Menu(key);
+			Graphic::Update();
+			timeSinceBeginMenu = current_time + 100;
+		}
 	}
 	return select;
 
@@ -27,21 +46,25 @@ int Menu::run_Menu()// ham chinh goi chay menu
 }
 input Menu::GetKey()// nhan phim bam nguoi dung
 {
-	Sleep(40); // de khong bi lap lien tuc
-	if (GetAsyncKeyState(VK_UP))
-		return UP;
-	if (GetAsyncKeyState(VK_DOWN))
-		return DOWN;
-	if (GetAsyncKeyState(VK_RETURN))
-		return ENTER;
-	else
+	//Sleep(40); // de khong bi lap lien tuc
+	if (!pressed)
+	{
+		pressed = true;
+		if (GetAsyncKeyState(VK_UP))
+		{
+				return UP;
+		}
+		if (GetAsyncKeyState(VK_DOWN))
+			return DOWN;
+		if (GetAsyncKeyState(VK_RETURN))
+			return ENTER;
 		return NONE;
+	}
+	else
+		pressed = false;
 }
-int Menu::update_Menu()// thiet lap viec chon
+void Menu::update_Menu(input in)// thiet lap viec chon
 {
-	input in;
-
-	in = GetKey();
 	switch (in)
 	{
 	case UP:
@@ -58,8 +81,6 @@ int Menu::update_Menu()// thiet lap viec chon
 			select++;
 		//DrawSelectMenu();
 		break;
-	case ENTER:
-		return select;
 	default:
 		break;
 	}
@@ -128,61 +149,67 @@ void Menu::DrawIcon(int startx, int starty, int color)//ve chu P.B
 }
 void Menu::DrawMenu()
 {
-	DrawBorder(8);
-	a.draw_Snow();
 	DrawIcon(game_width / 5 - 1, game_height / 6, 15);
 	DrawIcon(game_width / 5 - 1, game_height / 6 - 1, 4);
 	DrawSelectMenu();
-	Graphic::Update();
 }
 void Menu::DrawSelectMenu()
 {
-
+	Graphic::DrawString((game_width -menu_title.length())  / 2, game_height / 2 -1, menu_title, 10);
 	for (int i = game_width / 5; i < game_width - (game_width / 5); i++)
 	{
+		Graphic::Draw(i, game_height / 2 - 2, ROW, 15);
 		Graphic::Draw(i, game_height / 2, ROW, 15);
 		Graphic::Draw(i, 5 * game_height / 7, ROW, 15);
 	}
-	Graphic::DrawString(game_width / 3 + 2, game_height / 2, "/=Merry Christmas=\\", 10);
+	
 	//Graphic::DrawString(game_width / 3 - 7, 5 * game_height / 7, "|.|", 10);
-	for (int i = game_height / 2; i < 5 * game_height / 7; i++)
+	for (int i = game_height / 2 - 1; i < 5 * game_height / 7; i++)
 	{
 		Graphic::Draw(game_width / 5 - 1, i, COL, 15);
 		Graphic::Draw(game_width - (game_width / 5), i, COL, 15);
 	}
 
-	Graphic::Draw(game_width / 5 - 1, game_height / 2, TOP_LEFT, 15);
+	Graphic::Draw(game_width / 5 - 1, game_height / 2 - 2, TOP_LEFT, 15);
+	Graphic::Draw(game_width / 5 - 1, game_height / 2 , 204, 15);
 	Graphic::Draw(game_width / 5 - 1, 5 * game_height / 7, BOT_LEFT, 15);
 
-	Graphic::Draw(game_width - (game_width / 5), game_height / 2, TOP_RIGHT, 15);
+	Graphic::Draw(game_width - (game_width / 5), game_height / 2 - 2, TOP_RIGHT, 15);
+	Graphic::Draw(game_width - (game_width / 5), game_height / 2, 185, 15);
 	Graphic::Draw(game_width - (game_width / 5), 5 * game_height / 7, BOT_RIGHT, 15);
 
 	for (int i = 0; i < MAX_MENU; i++)
 	{
-		if (i == select)// ve cai khung
+		if (i != select)// ve cai khung
 		{
-			for (int j = game_width / 4 + 1; j < game_width - (game_width / 4); j++)
+			for (int j = game_width / 4 - 3; j < game_width - (game_width / 4) + 3; j++)
 			{
-				Graphic::Draw(j, game_height / 1.75 + 2 * i - 1, ROW, SELECT_COLOR);
+				for (int k = game_height / 1.75 + 2 * i - 1; k < game_height / 1.75 + 2 * i + 1; k++)
+				{
+					Graphic::Draw(j, k , static_cast<char>(255), 10); // deselect
+				}
 			}
-			Graphic::DrawString((game_width - menu_list[i].length() - 4) / 2, game_height / 1.75 + 2 * i, "> " + menu_list[i] + " <", SELECT_COLOR);
-			for (int j = game_width / 4 + 1; j < game_width - (game_width / 4); j++)
-			{
-				Graphic::Draw(j, game_height / 1.75 + 2 * i + 1, ROW, SELECT_COLOR);
-			}
-			Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * i, COL, SELECT_COLOR);
-			Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * i - 1, TOP_LEFT, SELECT_COLOR);
-			Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * i + 1, BOT_LEFT, SELECT_COLOR);
-			Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * i, COL, SELECT_COLOR);
-			Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * i - 1, TOP_RIGHT, SELECT_COLOR);
-			Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * i + 1, BOT_RIGHT, SELECT_COLOR);
-		}
-		else
-		{
 			Graphic::DrawString((game_width - menu_list[i].length() - 4) / 2, game_height / 1.75 + 2 * i, "  " + menu_list[i] + "  ", DESELECT_COLOR);
+			
 		}
 	}
-	Graphic::Update();
+		
+	/*for (int j = game_width / 4 + 1; j < game_width - (game_width / 4); j++)
+	{
+		Graphic::Draw(j, game_height / 1.75 + 2 * select - 1, ROW, SELECT_COLOR);
+	}
+	for (int j = game_width / 4 + 1; j < game_width - (game_width / 4); j++)
+	{
+		Graphic::Draw(j, game_height / 1.75 + 2 * select + 1, ROW, SELECT_COLOR);
+	}
+	Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * select, COL, SELECT_COLOR);
+	Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * select - 1, TOP_LEFT, SELECT_COLOR);
+	Graphic::Draw(game_width / 4, game_height / 1.75 + 2 * select + 1, BOT_LEFT, SELECT_COLOR);
+	Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * select, COL, SELECT_COLOR);
+	Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * select - 1, TOP_RIGHT, SELECT_COLOR);
+	Graphic::Draw(game_width - (game_width / 4), game_height / 1.75 + 2 * select + 1, BOT_RIGHT, SELECT_COLOR);*/
+	Graphic::DrawString((game_width - menu_list[select].length() - 4) / 2, game_height / 1.75 + 2 * select, "> " + menu_list[select] + " <", SELECT_COLOR);
+
 }
 void Menu::DrawBorder(int color)		//Ve man hinh chao mung Game
 {
@@ -206,6 +233,6 @@ void Menu::DrawBorder(int color)		//Ve man hinh chao mung Game
 		Graphic::Draw(game_width - 1, i, static_cast<char>(COL), color);
 	}
 	//Graphic::DrawString(game_width / 2 - 10, game_height / 2  - 5, "WELCOME TO OUR GAME!", color);
-	Graphic::Update();
+	//Graphic::Update();
 	//Graphic::DrawString(game_width / 2 - 10, game_height / 2 - 5, "                       ", color);//Xoa dong
 }

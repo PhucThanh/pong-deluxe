@@ -20,11 +20,11 @@ int main()
 		{
 		case 1:
 			//Xoa menu
-			Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
+			//Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
 			G.Begin();		//Bat dau tro choi PvP
 			break;
 		case 2:
-			Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
+			//Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
 			G.BeginBOT();	//Bat dau tro choi vs BOT
 			break;
 		case 3:

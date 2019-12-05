@@ -6,7 +6,7 @@ using namespace std;
 
 //physical console size
 static int console_width = 684;
-static int console_height = 684;
+static int console_height = 690;
 
 //So luong ky tu ngang va doc
 static int game_width = 65;//70 61

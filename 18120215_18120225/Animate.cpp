@@ -8,11 +8,11 @@ void Animate::clear()
 			Graphic::Draw(i, j, static_cast<char>(255), 0);
 		}
 	}
-	Graphic::Update();
+	//Graphic::Update();
 }
 void Animate::draw_Snow()
 {
-	clear();
+	//clear();
 	//srand((int)time(0));
 	for (int i = 0; i < 100; i++)
 	{
@@ -26,30 +26,20 @@ void Animate::draw_Snow()
 	{
 		Graphic::Draw(rand() % (game_width - 2) + 1, rand() % (game_height - 2) + 1, static_cast<char>(42), 8);
 	}
-	for (int i = 0; i < 300; i++)
-	{
-		Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height/10) - 2)  + 2), static_cast<char>(176), 8);
-	}
-	for (int i = 0; i < 15; i++)
-	{
-		Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height / 8) - 2) + 4), static_cast<char>(176), 15);
-	}
+	//for (int i = 0; i < 300; i++)
+	//{
+	//	Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height/10) - 2)  + 2), static_cast<char>(176), 1);
+	//}
+	//for (int i = 0; i < 15; i++)
+	//{
+	//	Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height / 8) - 2) + 4), static_cast<char>(176), 6);
+	//}
 	for (int i = 0; i < 30; i++)
 	{
-		Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height / 4) - 2)  + 6 ), static_cast<char>(249), 15);
+		Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height / 3) - 2)  + 6 ), static_cast<char>(249), 15);
 	}
 
-	Graphic::Update();
+	//Graphic::Update();
 	
 }
-//void Animate::draw_SnowFall()
-//{
-//	//while (true)
-//	{ 
-//		draw_Snow();
-//		Sleep(50);
-//		//clear();
-//		Graphic::Update();
-//	}
-//	
-//}
+void draw_Land();

@@ -6,7 +6,7 @@ class Animate
 public:
 	void clear();
 	void draw_Snow();
-	//void draw_SnowFall();
+	void draw_Land();
 	
 
 };

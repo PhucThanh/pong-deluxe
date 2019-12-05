@@ -12,15 +12,18 @@
 #define COL static_cast<char>(186)
 #define BLOCK static_cast<char>(219)
 #define BLOCK_COLOR 205
-#define SELECT_COLOR 10
-#define DESELECT_COLOR 4
+#define SELECT_COLOR 6
+#define DESELECT_COLOR 7
 enum input { UP, DOWN, ENTER, NONE };
 class Menu
 {
 	Animate a;
+	string menu_title;
 	string menu_list[MAX_MENU];
 	int select;
 	input in;
+	int current_time = 0;//So tick den thoi gian hien tai
+	bool pressed = false;
 public:
 	Menu();
 	~Menu();
@@ -28,7 +31,7 @@ public:
 	int run_Menu();
 	//tuong tac menu
 	input GetKey();
-	int update_Menu();
+	void update_Menu(input);
 	//hien thi menu
 	void DrawMenu();
 	void DrawSelectMenu();
