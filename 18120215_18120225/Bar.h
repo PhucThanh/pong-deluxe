@@ -1,12 +1,13 @@
 #pragma once
-#include <iostream>
 #include "Graphic.h"
-#include "Console.h"
 using namespace std;
 
 class Bar
 {
+	
 public:
+	bool isMovingLeft;
+	bool isMovingRight;
 	float x, y;			//vi tri hien tai
 	float xp, yp;		//previous x,y - vi tri cu
 	float sx;			//speed x - toc do

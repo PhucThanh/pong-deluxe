@@ -1,0 +1,14 @@
+﻿  Ball.cpp
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(5,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(6,6): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(8,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(9,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(22,47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(22,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(23,47): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(23,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(26,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(26,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(72,19): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\Ball.cpp(99,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  18120215_18120225.vcxproj -> C:\Users\ThanhPhuc\Desktop\Pong Deluxe\x64\Debug\18120215_18120225.exe

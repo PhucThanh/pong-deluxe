@@ -22,6 +22,9 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="GameBreaker.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="BoxManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -42,6 +45,9 @@
     <ClInclude Include="Menu.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="GameBreaker.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="BoxManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

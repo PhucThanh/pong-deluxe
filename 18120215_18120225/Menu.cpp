@@ -23,10 +23,12 @@ void Menu::ShowMenu()
 {
 	Graphic::DrawString(29, 12, "*****");
 	Graphic::DrawString(29, 14, "1. P vs P");
+	Graphic::goToXY(29, 21);
+	cout << static_cast<char>(219);
 	Graphic::DrawString(29, 15, "2. P vs BOT");
 	Graphic::DrawString(29, 16, "3. HELP");
 	Graphic::DrawString(29, 17, "4. EXIT");
-	Graphic::Update();
+	Graphic::DrawString(29, 18, "5. BREAKER");
 }
 
 void Menu::EnterCommand()	//Nhap lenh
@@ -64,19 +66,6 @@ void Menu::Help()		//Huong dan choi
 }
 void Menu::Draw(int color)		//Ve man hinh chao mung Game
 {
-	/*
-	C.DrawConsole(color);		//Tao console
-	C.GoToXY(0, Height_console + 1);			//Xoa bang diem phia duoi
-	for (int i = 0; i < Width_console + 1; ++i)
-		cout << ' ';
-	cout << endl;
-	for (int i = 0; i < Width_console + 1; ++i)
-		cout << ' ';
-	C.GoToXY(15, int(Height_console / 2));
-	C.ChangeColorText(color);		//Cau chao mung
-	cout << "WELCOME TO BALL BAR GAME!!!";
-	*/
-
 	for (int i = 0; i < game_width; ++i)
 	{
 		Graphic::Draw(i, 0, static_cast<char>(219), color);//Vẽ biên trên

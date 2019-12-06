@@ -29,7 +29,6 @@ Console::Console()
 	cfi.FontWeight = FW_NORMAL;
 	//Font chạy ổn định nhất: Lucida Console
 	wcscpy_s(cfi.FaceName, L"Lucida Console");
-	//wcscpy_s(cfi.FaceName, L"Consolas");
 
 	//lấy con trỏ giữ màn hình
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);

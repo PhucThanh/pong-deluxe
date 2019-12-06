@@ -14,7 +14,7 @@ void Game::Restart()	//choi lai
 	b.x = float(game_width / 2 - 1);	//set lai vi tri bong
 	b.y = float(game_height / 2);
 	p1.x = p2.x = float(game_width / 2);	//set lai vi tri thanh truot
-	b.ChangeSpeed(float(rand() % 3) - 1.5f, 1);	//thay doi toc do, tro lai ban dau
+	b.ChangeAngle(0);	//thay doi toc do, tro lai ban dau
 	start = false;		//game chua bat dau
 	//C.GoToXY(0, Height_console + 1);	//dua con tro toi vi tri bien duoi
 	//cout << endl << " \t  " << score1 << " \t\t\t   " << score2 << endl;	//update bang diem
@@ -57,8 +57,7 @@ void Game::Begin()	//khoi dong game
 {
 	score1 = 0;		//set lai diem ve 0
 	score2 = 0;
-	//C.DrawConsole(15);	//tao console
-	b.ChangeSpeed(1, 1);		//set toc do lai ban dau
+	b.ChangeAngle(0);		//set toc do lai ban dau
 	bool Check = true;	//Bien kiem tra xem nguoi choi co muon thoat game hay khong
 	int timeSinceBegin = 0;
 	while (Check)
@@ -76,7 +75,7 @@ void Game::Begin()	//khoi dong game
 				b.x += b.sx;					//thay doi vi tri bong
 				b.y += b.sy;
 				b.HitBar(p1, p2);				//bong cham thanh truot
-				b.HitBorder(game_width, game_height);			//bong cham bien
+				b.HitSideBorder(game_width, game_height);			//bong cham bien
 				Win();							//xu li thang thua
 			}
 			else
@@ -99,7 +98,7 @@ void Game::BeginBOT()		//Tuong tu ben tren
 	score2 = 0;
 	//C.DrawConsoleBOT(15);
 	int timeSinceBegin = 0;
-	b.ChangeSpeed(float(rand() % 3) - 1.5f, 0.5);
+	b.ChangeAngle(0);
 	bool Check = true;
 	while (Check)
 	{
@@ -118,7 +117,7 @@ void Game::BeginBOT()		//Tuong tu ben tren
 				b.x += b.sx;
 				b.y += b.sy;
 				b.HitBar(p1, p2);
-				b.HitBorder(game_width, game_height);
+				b.HitSideBorder(game_width, game_height);
 				Win();
 			}
 			else
@@ -134,19 +133,19 @@ void Game::BeginBOT()		//Tuong tu ben tren
 	}
 }
 
-void Game::Draw(int color)		//Ve man hinh chao mung Game
-{
-	//C.DrawConsole(color);		//Tao console
-	//C.GoToXY(0, Height_console + 1);			//Xoa bang diem phia duoi
-	for (int i = 0; i < console_width + 1; ++i)
-		cout << ' ';
-	cout << endl;
-	for (int i = 0; i < console_width + 1; ++i)
-		cout << ' ';
-	p1.Draw(color);			//Tao thanh truot 1
-	p2.Draw(color);			//Tao thanh truot 2
-	//C.GoToXY(15, int(Height_console / 2));
-	//C.ChangeColorText(color);		//Cau chao mung
-	cout << "WELCOME TO BALL BAR GAME!!!";
-}
+//void Game::Draw(int color)		//Ve man hinh chao mung Game
+//{
+//	//C.DrawConsole(color);		//Tao console
+//	//C.GoToXY(0, Height_console + 1);			//Xoa bang diem phia duoi
+//	for (int i = 0; i < console_width + 1; ++i)
+//		cout << ' ';
+//	cout << endl;
+//	for (int i = 0; i < console_width + 1; ++i)
+//		cout << ' ';
+//	p1.Draw(color);			//Tao thanh truot 1
+//	p2.Draw(color);			//Tao thanh truot 2
+//	//C.GoToXY(15, int(Height_console / 2));
+//	//C.ChangeColorText(color);		//Cau chao mung
+//	cout << "WELCOME TO BALL BAR GAME!!!";
+//}
 
