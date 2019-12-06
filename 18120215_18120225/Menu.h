@@ -17,7 +17,7 @@
 enum input { UP, DOWN, ENTER, NONE };
 class Menu
 {
-	Animate a;
+	//Animate a;
 	string menu_title;
 	string menu_list[MAX_MENU];
 	int select;

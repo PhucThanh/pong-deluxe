@@ -4,10 +4,10 @@
 class Animate
 {
 public:
-	void clear();
-	void draw_Snow();
-	void draw_Land();
-	
+	static void clear();
+	static void draw_Snow();
+	static void draw_Land();
+	static void draw_Tree(int, int);
 
 };
 

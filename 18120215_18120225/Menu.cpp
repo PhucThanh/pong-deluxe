@@ -3,7 +3,7 @@ Menu::Menu()
 {
 	menu_title = "- MAIN MENU -";
 	select = 0;
-	menu_list[0] = " BREAKER GAME";
+	menu_list[0] = "BREAKER GAME";
 	menu_list[1] = "PONG GAME";
 	menu_list[2] = "HOW TO PLAY";
 	menu_list[3] = "EXIT";
@@ -25,10 +25,10 @@ int Menu::run_Menu()// ham chinh goi chay menu
 		current_time = GetTickCount();
 		if (current_time > timeSinceBeginSnow)
 		{
-			a.clear();
+			Animate::clear();
 			
-
-			a.draw_Snow();
+			Animate::draw_Land();
+			Animate::draw_Snow();
 			
 			timeSinceBeginSnow = current_time +300;
 		}
@@ -155,27 +155,27 @@ void Menu::DrawMenu()
 }
 void Menu::DrawSelectMenu()
 {
-	Graphic::DrawString((game_width -menu_title.length())  / 2, game_height / 2 -1, menu_title, 10);
+	Graphic::DrawString((game_width -menu_title.length())  / 2, game_height / 2 , menu_title, 10);//Tieu de menu
 	for (int i = game_width / 5; i < game_width - (game_width / 5); i++)
 	{
-		Graphic::Draw(i, game_height / 2 - 2, ROW, 15);
-		Graphic::Draw(i, game_height / 2, ROW, 15);
+		Graphic::Draw(i, game_height / 2 - 1, ROW, 15);
+		Graphic::Draw(i, game_height / 2 + 1, ROW, 15);
 		Graphic::Draw(i, 5 * game_height / 7, ROW, 15);
 	}
 	
 	//Graphic::DrawString(game_width / 3 - 7, 5 * game_height / 7, "|.|", 10);
-	for (int i = game_height / 2 - 1; i < 5 * game_height / 7; i++)
+	for (int i = game_height / 2 ; i < 5 * game_height / 7; i++)
 	{
 		Graphic::Draw(game_width / 5 - 1, i, COL, 15);
 		Graphic::Draw(game_width - (game_width / 5), i, COL, 15);
 	}
 
-	Graphic::Draw(game_width / 5 - 1, game_height / 2 - 2, TOP_LEFT, 15);
-	Graphic::Draw(game_width / 5 - 1, game_height / 2 , 204, 15);
+	Graphic::Draw(game_width / 5 - 1, game_height / 2 - 1, TOP_LEFT, 15);
+	Graphic::Draw(game_width / 5 - 1, game_height / 2 + 1 , 204, 15);
 	Graphic::Draw(game_width / 5 - 1, 5 * game_height / 7, BOT_LEFT, 15);
 
-	Graphic::Draw(game_width - (game_width / 5), game_height / 2 - 2, TOP_RIGHT, 15);
-	Graphic::Draw(game_width - (game_width / 5), game_height / 2, 185, 15);
+	Graphic::Draw(game_width - (game_width / 5), game_height / 2 - 1, TOP_RIGHT, 15);
+	Graphic::Draw(game_width - (game_width / 5), game_height / 2 + 1, 185, 15);
 	Graphic::Draw(game_width - (game_width / 5), 5 * game_height / 7, BOT_RIGHT, 15);
 
 	for (int i = 0; i < MAX_MENU; i++)
