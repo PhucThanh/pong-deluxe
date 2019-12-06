@@ -22,11 +22,9 @@ void Bar::GetKey(int left, int right)  //nhan tin hieu ban phim
 	if (GetAsyncKeyState(left))        //phim mui ten trai
 	{
 		isMovingLeft = true;
-		//x -= 3;						   //thanh truot di chuyen sang trai
 	}
 	else if (GetAsyncKeyState(right)) //phim mui ten phai
 	{
-		//x += 3;						   //thanh truot di chuyen sang phai
 		isMovingRight = true;
 	}
 	else//Khong bam phim nao het 
@@ -42,13 +40,13 @@ void Bar::GetKey(int left, int right)  //nhan tin hieu ban phim
 
 void Bar::HitBorder(int width)	//thanh truot cham bien
 {
-	if (x < size + 2)						//thanh truot cham bien trai
+	if (x < size+1)						//thanh truot cham bien trai
 	{					
-		x = float(size + 2);				//thanh truot o nguyen vi tri
+		x = float(size+1);				//thanh truot o nguyen vi tri
 	}
-	else if (x > width - size - 6)			//thanh truot cham bien phai
+	else if (x > width - size-1)			//thanh truot cham bien phai
 	{
-		x = float(width - size - 6);		//thanh truot o nguyen vi tri
+		x = float(width - size-1);		//thanh truot o nguyen vi tri
 	}
 
 }

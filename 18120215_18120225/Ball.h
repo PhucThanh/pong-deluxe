@@ -21,11 +21,11 @@ public:
 
 	void set_Ball(int, int);	//ham tao bong, input la vi tri x,y cua bong
 	void Draw(int);		//tao bong tren console, input la mau qua bong
-	void ChangeAngle(float);		//thay doi toc do, input la sx, sy moi cua bong
 	void HitBar(Bar, Bar);		//doi huong khi bong cham vao thanh truot, input la gia tri hai thanh tren va duoi
 	void HitSideBorder(int&, int&);	//doi huong khi bong cham vao bien, input la chieu rong va chieu cao cua ban do choi
 	void MaxSpeed(int);			//Xu li khi bong vuot qua toc do toi da, input la max speed
 	void HitBarBottom(Bar);
 	void HitSideTopBorder(int&, int&);
+	void setToPrevious();//Set current position to previous
 };
 

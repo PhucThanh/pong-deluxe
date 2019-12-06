@@ -15,6 +15,16 @@ void Graphic::Update()
 	WriteConsoleOutput(m_hConsole, m_bufScreen, { short(game_width),short(game_height) }, { 0,0 }, &m_rectWindow);
 
 }
+void Graphic::ClearScr() 
+{
+	for (int i = 1; i < game_width - 1; i++)
+	{
+		for (int j = 1; j < game_height-1; j++)
+		{
+			Graphic::Draw(i, j, static_cast<char>(255), 0);
+		}
+	}
+}
 void Graphic::Draw(int x, int y, short c = 0x2588, short col = 0x000F)
 {
 	if (x >= 0 && x < game_width && y >= 0 && y < game_height)

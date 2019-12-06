@@ -32,12 +32,6 @@ void Ball::Draw(int color)   //ve bong tren console
 	
 	
 }
-void Ball::ChangeAngle(float angle)     //thay doi toc do
-{
-	this->angle = angle;
-	sx = sin(angle);
-	sy = cos(angle);
-}
 void Ball::HitBar(Bar p1, Bar p2)    //doi huong khi cham vao thanh truot
 {
 	if (y >= p1.y - 1 && y <= p1.y + 1)					//
@@ -69,16 +63,14 @@ void Ball::HitBarBottom(Bar p)
 		if (x > p.x - p.size && x < p.x + p.size)  //
 		{
 			dy *= -1;
-			ChangeAngle(PI - angle);
 			y = p.y - 1;                              //set lai vi tri cua bong o phan tren cua thanh
-			//ChangeSpeed(sx * 1.1, sy * 1.1);
 			if (p.isMovingLeft) 
 			{
-				dx -= 3;
+				dx -= 1;
 			}
 			else if (p.isMovingRight) 
 			{
-				dy += 3;
+				dx += 1;
 			}
 
 		}
@@ -86,17 +78,16 @@ void Ball::HitBarBottom(Bar p)
 }
 void Ball::HitSideBorder(int& width, int& height)             //bong cham bien
 {
-	if (x <= 3) 
+	if (x <= 1) 
 	{													 //bong cham bien trai
-		//sx *= -1;										//doi huong bong
 		dx *= -1;
-		x = 3.0f;										//set lai vi tri bong o trong bien
+		x = 1.0f;										//set lai vi tri bong o trong bien
 	}
-	else if (x >= width - 7) 
+	else if (x >= width - 2) 
 	{													//bong cham bien phai
 		//sx *= -1;									    //doi huong bong
 		dx *= -1;
-		x = width - 7;                           //set lai vi tri bong o trong bien
+		x = width - 2;                           //set lai vi tri bong o trong bien
 	}
 }
 void Ball::HitSideTopBorder(int &width, int &height) 
@@ -111,20 +102,42 @@ void Ball::HitSideTopBorder(int &width, int &height)
 }
 void Ball::MaxSpeed(int v)		//Xu ly khi bong vuot qua toc do toi da
 {
-	if (sx < -v)			//So sanh toc do hien tai voi v
+	if (dx > v)
 	{
-		sx = -v;					// Cho toc do bang v
+		dx = v;
 	}
-	else if (sx > v)
+	else if (dx < -v) 
 	{
-		sx = v;
+		dx = -v;
 	}
-	if (sy < -v)			//So sanh toc do hien tai voi v
+	/*if (dy > v)
 	{
-		sy = -v;					// Cho toc do bang v
+		dy = v;
 	}
-	else if (sy > v)
+	else if (dy < v)
 	{
-		sy = v;
-	}
+		dy = -v;
+	}*/
+
+	//if (sx < -v)			//So sanh toc do hien tai voi v
+	//{
+	//	sx = -v;					// Cho toc do bang v
+	//}
+	//else if (sx > v)
+	//{
+	//	sx = v;
+	//}
+	//if (sy < -v)			//So sanh toc do hien tai voi v
+	//{
+	//	sy = -v;					// Cho toc do bang v
+	//}
+	//else if (sy > v)
+	//{
+	//	sy = v;
+	//}
+}
+void Ball::setToPrevious() 
+{
+	x = x_previous;
+	y = y_previous;
 }

@@ -14,7 +14,6 @@ void Game::Restart()	//choi lai
 	b.x = float(game_width / 2 - 1);	//set lai vi tri bong
 	b.y = float(game_height / 2);
 	p1.x = p2.x = float(game_width / 2);	//set lai vi tri thanh truot
-	b.ChangeAngle(0);	//thay doi toc do, tro lai ban dau
 	start = false;		//game chua bat dau
 	//C.GoToXY(0, Height_console + 1);	//dua con tro toi vi tri bien duoi
 	//cout << endl << " \t  " << score1 << " \t\t\t   " << score2 << endl;	//update bang diem
@@ -57,7 +56,6 @@ void Game::Begin()	//khoi dong game
 {
 	score1 = 0;		//set lai diem ve 0
 	score2 = 0;
-	b.ChangeAngle(0);		//set toc do lai ban dau
 	bool Check = true;	//Bien kiem tra xem nguoi choi co muon thoat game hay khong
 	int timeSinceBegin = 0;
 	while (Check)
@@ -98,7 +96,6 @@ void Game::BeginBOT()		//Tuong tu ben tren
 	score2 = 0;
 	//C.DrawConsoleBOT(15);
 	int timeSinceBegin = 0;
-	b.ChangeAngle(0);
 	bool Check = true;
 	while (Check)
 	{

@@ -37,66 +37,87 @@ void Box::BoxHitBall(Ball& b)
 	{
 		int b_y = b.y;
 		int b_x = b.x;
-
-		/*
-		1====2
-		|####|
-		|#xx#|
-		|####|
-		3====4
-		*/
-
+		int b_yp = b.y_previous;
+		int b_xp = b.x_previous;
 		//Cạnh
-		if ((b_y == y) && (b_x >= x + 1) && (b_x <= x + width-2))//Top
+		if ((b_y == y) && (b_x >= x + 1) && (b_x <= x + width-2))//Top bar
 		{
-			b.sy *= -1;
-			b.y--;
+			b.setToPrevious();
+			b.dy *= -1;
 			health--;
 		}
-		else if ((b_y == y+height-1) && (b_x >= x + 1) && (b_x <= x+width-2))//Bot
+		else if ((b_y == y+height-1) && (b_x >= x + 1) && (b_x <= x+width-2))//Bottom bar
 		{
-			b.sy *= -1;
-			b.y++;
+			b.setToPrevious();
+			b.dy *= -1;
 			health--;
 		}
-		else if ((b_x == x) && (b_y >= y + 1)&&(b_y<=y+height-2)) //Left
+		else if ((b_x == x) && (b_y >= y + 1)&&(b_y<=y+height-2)) //Left bar
 		{
-			b.sx *= -1;
-			b.x--;
+			b.dx *= -1;
+			b.setToPrevious();
 			health--;
 		}
-		else if ((b_x == x+width-1) && (b_y >= y + 1) && (b_y <= y + height - 2))//Right
+		else if ((b_x == x+width-1) && (b_y >= y + 1) && (b_y <= y + height - 2))//Right bar
 		{
-			b.sx *= -1;
-			b.x++;
+			b.dx *= -1;
+			b.setToPrevious();
 			health--;
 		}
 		//Góc
 		if (b_x == x && b_y == y) //Góc trái trên
 		{
-			b.sx = -1;
-			b.sy = -1;
+			b.setToPrevious();
+			if (b_xp<x)//Den tu ben trai 
+			{
+				b.dx *= -1;
+			}
+			if (b_yp < y)//Den tu phia tren 
+			{
+				b.dy *= -1;
+			}
 			health--;
 		}
 
 		if (b_x == x+width-1 && b_y == y) //Góc phải trên
 		{
-			b.sx = 1;
-			b.sy = -1;
+			b.setToPrevious();
+			if (b_xp > x+width-1)//Den tu ben phai 
+			{
+				b.dx *= -1;
+			}
+			if (b_yp < y)//Den tu phia tren 
+			{
+				b.dy *= -1;
+			}
 			health--;
 		}
 
 		if (b_x == x && b_y == y+height-1) //Góc trái dưới
 		{
-			b.sx = -1;
-			b.sy = 1;
+			b.setToPrevious();
+			if (b_xp < x)//Den tu ben trai 
+			{
+				b.dx *= -1;
+			}
+			if (b_yp > y+height-1)//Den tu phia duoi 
+			{
+				b.dy *= -1;
+			}
 			health--;
 		}
 
 		if (b_x == x+width-1 && b_y == y+height-1) //Góc phải dưới
 		{
-			b.sx = 1;
-			b.sy = 1;
+			b.setToPrevious();
+			if (b_xp > x + width - 1)//Den tu ben phai
+			{
+				b.dx *= -1;
+			}
+			if (b_yp > y + height - 1)//Den tu phia duoi
+			{
+				b.dy *= -1;
+			}
 			health--;
 		}
 	}

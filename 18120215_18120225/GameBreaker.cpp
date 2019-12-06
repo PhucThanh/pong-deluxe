@@ -2,7 +2,7 @@
 GameBreaker::GameBreaker() 
 {
 	start = false;
-	bar.set_Bar(game_width / 2, game_height - 15, 8);	//tao thanh truot
+	bar.set_Bar(game_width / 2, game_height - 10, 8);	//tao thanh truot
 	b.set_Ball(game_width / 2 - 1, game_height / 2+3);	//tao bong
 }
 void GameBreaker::BeforeStart(bool& Check) 
@@ -29,8 +29,8 @@ void GameBreaker::Begin()
 {
 	//b.ChangeAngle(1, 1);
 	//b.ChangeAngle(45*PI/180);
-	b.dx = 3;
-	b.dy = 10;
+	b.dx = 1;
+	b.dy = 1;
 
 	bool Check = true;	//Bien kiem tra xem nguoi choi co muon thoat game hay khong
 	int timeSinceBegin = 0;
@@ -39,7 +39,7 @@ void GameBreaker::Begin()
 		current_time = GetTickCount();
 		if (current_time > timeSinceBegin)
 		{
-			//b.MaxSpeed(2);
+			b.MaxSpeed(4);
 			if (start)	//game bat dau
 			{
 
@@ -61,7 +61,7 @@ void GameBreaker::Begin()
 				b.HitBarBottom(bar);//bong cham thanh truot
 				b.HitSideTopBorder(game_width, game_height);
 				
-				//boxManager.BallHitBoxes(b);
+				boxManager.BallHitBoxes(b);
 				//bong cham bien
 				//Win();							//xu li thang thua
 			}
