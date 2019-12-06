@@ -1,4 +1,4 @@
 ﻿  GameBreaker.cpp
-C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\GameBreaker.cpp(52,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\GameBreaker.cpp(53,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\GameBreaker.cpp(49,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\ThanhPhuc\Desktop\Pong Deluxe\18120215_18120225\GameBreaker.cpp(50,25): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   18120215_18120225.vcxproj -> C:\Users\ThanhPhuc\Desktop\Pong Deluxe\x64\Debug\18120215_18120225.exe

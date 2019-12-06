@@ -23,14 +23,14 @@ void BoxManager::GenerateRandomBoxes(int n)
 	{
 		Box b;
 		//Generate random health and positon
-		int box_x = 2+ box_width * (rand() % 9);//number 2 for border
+		int box_x = 2+ box_width * (rand() % 10);//number 2 for border
 		int box_y = 2+ box_height * (rand() % 7);
 		int box_health = 1+rand() % 10;
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))
 		{
-			box_x = 2+ box_width * (rand() % 9);
+			box_x = 2+ box_width * (rand() % 10);
 			box_y = 2+ box_height * (rand() % 7);
 		}
 		b.setPosition(box_x, box_y, box_health, box_width, box_height);//set box postion
