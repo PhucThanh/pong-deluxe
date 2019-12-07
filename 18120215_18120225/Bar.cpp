@@ -2,6 +2,7 @@
 
 void Bar::set_Bar(int x1, int y1, int size1)   //tao thanh truot
 {
+	isMovingLeft = isMovingRight = false;
 	x = float(x1);           //dua gia tri x1 vao x
 	y = float(y1);           //dua gia tri y1 vao y
 	xp = x;                  //set vi tri cu
@@ -11,14 +12,7 @@ void Bar::set_Bar(int x1, int y1, int size1)   //tao thanh truot
 }
 void Bar::Draw(int color)             //ve thanh truot
 {
-	//for (int i = -size; i < size; ++i) 
-	//{								 
-		//Graphic::Draw(int(xp) + i, int(yp), ' ', color);
-	//}                                  //
 	Graphic::DrawRec(int(xp) - size, int(yp), int(xp) + size-1, int(yp),' ',0); //xoa vi tri cu
-
-	//for (int i = -size; i < size; ++i) //
-		//Graphic::Draw(int(x)+i, int(y), 219, color);
 	Graphic::DrawRec(int(x) - size, int(y), int(x) + size-1, int(y), 219, 4); //ve thanh truot
 	xp = x;                       
 	yp = y;                            //set lai vi tri cu
@@ -27,24 +21,32 @@ void Bar::GetKey(int left, int right)  //nhan tin hieu ban phim
 {
 	if (GetAsyncKeyState(left))        //phim mui ten trai
 	{
-		x -= 3;						   //thanh truot di chuyen sang trai
+		isMovingLeft = true;
 	}
 	else if (GetAsyncKeyState(right)) //phim mui ten phai
 	{
-		x += 3;						   //thanh truot di chuyen sang phai
+		isMovingRight = true;
 	}
-
+	else//Khong bam phim nao het 
+	{
+		isMovingLeft = false;
+		isMovingRight = false;
+	}
+	if (isMovingLeft)
+		x -= 3;
+	if (isMovingRight)
+		x += 3;
 }
 
 void Bar::HitBorder(int width)	//thanh truot cham bien
 {
-	if (x < size + 2)						//thanh truot cham bien trai
+	if (x < size+1)						//thanh truot cham bien trai
 	{					
-		x = float(size + 2);				//thanh truot o nguyen vi tri
+		x = float(size+1);				//thanh truot o nguyen vi tri
 	}
-	else if (x > width - size - 6)			//thanh truot cham bien phai
+	else if (x > width - size-1)			//thanh truot cham bien phai
 	{
-		x = float(width - size - 6);		//thanh truot o nguyen vi tri
+		x = float(width - size-1);		//thanh truot o nguyen vi tri
 	}
 
 }

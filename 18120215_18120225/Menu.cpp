@@ -1,71 +1,144 @@
 ﻿#include "Menu.h"
-Menu::Menu()
-{
-	menu_title = "- MAIN MENU -";
-	select = 0;
-	menu_list[0] = "BREAKER GAME";
-	menu_list[1] = "PONG GAME";
-	menu_list[2] = "HOW TO PLAY";
-	menu_list[3] = "EXIT";
-}
-Menu::~Menu()
-{
-	delete[] menu_list;
-}
+
 int Menu::run_Menu()// ham chinh goi chay menu
 {
-	//Intro();
-	input key = GetKey();;
+	Intro();
+	cur = new MainMenu[MAX_MENU];//Khoi tao menu dau
+	input key = cur->GetKey();
 	int timeSinceBeginSnow = 0;
 	int timeSinceBeginMenu = 0;
-	while (key!=ENTER)
+	while (1)
 	{
-		
-		key = GetKey();
+		//Sleep(10);
+			
 		current_time = GetTickCount();
+		//cout << cur->pick;
+	
 		if (current_time > timeSinceBeginSnow)
 		{
-			Animate::clear();
-			
+			Graphic::ClearScr();// xoa man hinh va draw lan luot nhung thu can thiet
+			task_menu.draw_TaskBar();
 			Animate::draw_Land();
 			Animate::draw_Snow();
-			
-			timeSinceBeginSnow = current_time +300;
+			timeSinceBeginSnow = current_time + 120;
 		}
 		if (current_time > timeSinceBeginMenu)
 		{
-			DrawMenu();
-			update_Menu(key);
+			
+			key = cur->GetKey();// nhan input tu nguoi choi
+			cur->DrawMenu();
+			cur->update_Menu(key);
 			Graphic::Update();
-			timeSinceBeginMenu = current_time + 100;
+			enter = false;// sau khi draw moi khoi tao lai bien cua phim enter
+			timeSinceBeginMenu = current_time + 70;
 		}
+		if (key == ENTER && enter == false && cur->pick != 0)// Menu khac voi main menu va chi nhan enter 1 lan
+		{
+			enter = true;
+			switch (cur->get_Select())
+			{
+			case 0://1 Player
+				if (cur->pick == 1)//1 la menu vua breaker game, 2 la menu cua pong game
+					return 11;// 1: Game Breaker, 1: Che do 1 nguoi
+				else
+					return 21;// 2: Game Pong, 1: Che do 1 nguoi
+				break;
+			case 1://PvP
+				if (cur->pick == 1)
+					return 12;// 1: Game Breaker, 2: Che do 2 nguoi
+				else
+					return 22;// 2: Game Pong, 1: Che do 2 nguoi
+				break;
+			case 2://HIGH SCORE
+				exit(1);
+				break;
+			case 3://BACK TO MAIN
+				cur = new MainMenu();//Tao lai main menu
+				break;
+			default:
+				break;
+			}
+		}
+		if (key == ENTER && enter == false && cur->pick == 0)//Main menu
+		{
+			enter = true;
+			switch (cur->get_Select())
+			{
+			case 0:
+			{
+				//cur->~Menu();
+				cur = new BreakerMenu[MAX_MENU];//Chuyen sang menu breaker
+				break;
+			}
+			case 1:
+			{
+				//cout << cur->get_Select();
+				//delete[] cur;
+				cur = new PongMenu[MAX_MENU];//Chuyen sang menu pong
+				//enter = false;
+
+				break;
+			}
+			case 2:
+			{
+				//in how to play
+				break;
+			}
+			case 3:
+			{
+				exit(1);//thoat game
+			}
+			default:
+				break;
+			}
+			
+
+		}
+		
+		
 	}
+	//input key = GetKey();
+	//main.DrawSelectMenu();
 	return select;
 
 
 }
+int Menu::get_Select()
+{
+	return select;
+}
 input Menu::GetKey()// nhan phim bam nguoi dung
 {
-	//Sleep(40); // de khong bi lap lien tuc
-	if (!pressed)
+	if (!pressed)//Kiem tra phim bam
 	{
 		pressed = true;
 		if (GetAsyncKeyState(VK_UP))
 		{
-				return UP;
+			//in = UP;
+			return UP;
 		}
 		if (GetAsyncKeyState(VK_DOWN))
+		{
+			//in = DOWN;
 			return DOWN;
+		}
 		if (GetAsyncKeyState(VK_RETURN))
+		{
+			//in = ENTER;
 			return ENTER;
-		return NONE;
+		}
+		{
+			//in = NONE;
+			return NONE;
+		}
 	}
 	else
 		pressed = false;
 }
-void Menu::update_Menu(input in)// thiet lap viec chon
+void Menu::update_Menu(input inkey)// thiet lap viec chon
 {
-	switch (in)
+	
+	switch (inkey)
 	{
 	case UP:
 		if (select == 0)
@@ -81,6 +154,7 @@ void Menu::update_Menu(input in)// thiet lap viec chon
 			select++;
 		//DrawSelectMenu();
 		break;
+
 	default:
 		break;
 	}
@@ -93,6 +167,7 @@ void Menu::Intro()
 	{
 		DrawBorder(i);
 		Sleep(70);
+		Graphic::Update();
 	}
 	DrawBorder(7);
 }
@@ -156,6 +231,7 @@ void Menu::DrawMenu()
 void Menu::DrawSelectMenu()
 {
 	Graphic::DrawString((game_width -menu_title.length())  / 2, game_height / 2 , menu_title, 10);//Tieu de menu
+	//Khung menu
 	for (int i = game_width / 5; i < game_width - (game_width / 5); i++)
 	{
 		Graphic::Draw(i, game_height / 2 - 1, ROW, 15);
@@ -163,7 +239,6 @@ void Menu::DrawSelectMenu()
 		Graphic::Draw(i, 5 * game_height / 7, ROW, 15);
 	}
 	
-	//Graphic::DrawString(game_width / 3 - 7, 5 * game_height / 7, "|.|", 10);
 	for (int i = game_height / 2 ; i < 5 * game_height / 7; i++)
 	{
 		Graphic::Draw(game_width / 5 - 1, i, COL, 15);
@@ -177,10 +252,10 @@ void Menu::DrawSelectMenu()
 	Graphic::Draw(game_width - (game_width / 5), game_height / 2 - 1, TOP_RIGHT, 15);
 	Graphic::Draw(game_width - (game_width / 5), game_height / 2 + 1, 185, 15);
 	Graphic::Draw(game_width - (game_width / 5), 5 * game_height / 7, BOT_RIGHT, 15);
-
+	//draw menu item
 	for (int i = 0; i < MAX_MENU; i++)
 	{
-		if (i != select)// ve cai khung
+		if (i != select)
 		{
 			for (int j = game_width / 4 - 3; j < game_width - (game_width / 4) + 3; j++)
 			{
@@ -211,14 +286,10 @@ void Menu::DrawSelectMenu()
 	Graphic::DrawString((game_width - menu_list[select].length() - 4) / 2, game_height / 1.75 + 2 * select, "> " + menu_list[select] + " <", SELECT_COLOR);
 
 }
-void Menu::DrawBorder(int color)		//Ve man hinh chao mung Game
+void Menu::DrawBorder(int color)		//Ve khung Game
 {
 
-	Graphic::Draw(0, 0, TOP_LEFT, color);
-	Graphic::Draw(game_width - 1, 0, TOP_RIGHT, color);
-	Graphic::Draw(0, game_height - 1, BOT_LEFT, color);
-	Graphic::Draw(game_width - 1, game_height - 1, BOT_RIGHT, color);
-	for (int i = 1; i < game_width - 1; ++i)
+	for (int i = 1; i < full_width - 1; ++i)
 	{
 		Graphic::Draw(i, 0, ROW, color);//Bien tren
 		Graphic::Draw(i, game_height - 1, ROW, color);//Bien duoi
@@ -226,13 +297,75 @@ void Menu::DrawBorder(int color)		//Ve man hinh chao mung Game
 	for (int i = 1; i < game_height - 1; ++i)
 	{
 		//Biên trái
-		Graphic::Draw(0, i, static_cast<char>(COL), color);
+		Graphic::Draw(0, i, COL, color);
 		//Graphic::Draw(1, i, static_cast<char>(c), color);
 		//Biên phải
 		//Graphic::Draw(game_width , i, static_cast<char>(186), color);
-		Graphic::Draw(game_width - 1, i, static_cast<char>(COL), color);
+		Graphic::Draw(game_width - 1, i, COL, color);
+		Graphic::Draw(full_width - 1, i, COL, color);
 	}
+	Graphic::Draw(0, 0, TOP_LEFT, color);
+	Graphic::Draw(game_width - 1, 0, 203, color);
+	Graphic::Draw(full_width - 1, 0, TOP_RIGHT, color);
+	Graphic::Draw(0, game_height - 1, BOT_LEFT, color);
+	Graphic::Draw(game_width - 1, game_height - 1, 202, color);
+	Graphic::Draw(full_width - 1, game_height - 1, BOT_RIGHT, color);
+
 	//Graphic::DrawString(game_width / 2 - 10, game_height / 2  - 5, "WELCOME TO OUR GAME!", color);
 	//Graphic::Update();
 	//Graphic::DrawString(game_width / 2 - 10, game_height / 2 - 5, "                       ", color);//Xoa dong
+}
+//////////////////////-----------------[MAIN MENU]-------------------/////////////////////////////////////////////////
+MainMenu::MainMenu()
+{
+	
+	menu_title = "- MAIN MENU -";
+	select = 0;
+	menu_list[0] = "BREAKER GAME";
+	menu_list[1] = "PONG GAME";
+	menu_list[2] = "HOW TO PLAY";
+	menu_list[3] = "EXIT";
+	//pressed = false; //kiem tra xem da bam enter hay chua: bam roi thi chuyen sang false
+	pick = 0;
+}
+MainMenu::~MainMenu()
+{
+
+	delete[] menu_list;
+}
+//////////////////////-----------------[BREAKER MENU]-------------------///////////////////////////////////////
+BreakerMenu::BreakerMenu()
+{
+
+	menu_title = "- BREAKER GAME -";
+	select = 0;
+	menu_list[0] = "1 PLAYER";
+	menu_list[1] = "2 PLAYER";
+	menu_list[2] = "HIGH SCORE";
+	menu_list[3] = "BACK TO MAIN MENU";
+	//pressed = true;//kiem tra xem da bam enter hay chua: bam roi thi chuyen sang false
+	pick = 1;
+}
+BreakerMenu::~BreakerMenu()
+{
+
+	delete[] menu_list;
+}
+//////////////////////-----------------[PONG MENU]-------------------///////////////////////////////////////
+PongMenu::PongMenu()
+{
+
+	menu_title = "- PONG GAME -";
+	select = 0;		
+	menu_list[0] = "1 PLAYER";
+	menu_list[1] = "2 PLAYER";
+	menu_list[2] = "HIGH SCORE";
+	menu_list[3] = "BACK TO MAIN MENU";
+	//pressed = true;//kiem tra xem da bam enter hay chua: bam roi thi chuyen sang false
+	pick = 2;
+}
+PongMenu::~PongMenu()
+{
+
+	delete[] menu_list;
 }

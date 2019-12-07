@@ -1,16 +1,18 @@
 ﻿#pragma once
 #include <windows.h>
 #include <iostream>
+#include <string>
 #include <conio.h>
 using namespace std;
 
 //physical console size
-static int console_width = 684;
+static int console_width = 800;
 static int console_height = 690;
 
 //So luong ky tu ngang va doc
-static int game_width = 71;//70 61
+static int game_width = 71;//70 70
 static int game_height = 61;
+static int full_width = 110;
 //Font chữ
 static int font_x = 0;//7 10
 static int font_y = 10;

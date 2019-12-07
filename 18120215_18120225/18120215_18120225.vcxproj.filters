@@ -25,12 +25,21 @@
     <ClCompile Include="Animate.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBreaker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskBar.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
-      <Filter>Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Console.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Bar.h">
@@ -46,6 +55,21 @@
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Animate.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxManager.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBreaker.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskBar.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

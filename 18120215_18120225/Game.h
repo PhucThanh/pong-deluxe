@@ -5,18 +5,18 @@
 #include "Graphic.h"
 #include <ctime>
 //Game Set
-static int bar_color = 9;
-static int ball_color = 15;
+
 class Game
 {
 	
 private:
 	Bar p1,p2;		//thanh truot player 1, player 2
 	Ball b;			//bong
-	//Console C;		//console 
 	bool start;		//hieu lenh kiem tra bat dau game hay chua
 	int score1, score2;		//diem player 1, player 2
 	int current_time;
+	int bar_color = 9;
+	int ball_color = 15;
 public:
 	Game();		//constructor Game
 	void Restart();	//choi lai
@@ -24,6 +24,6 @@ public:
 	void BeforeStart(bool &);	//man hinh truoc khi bat dau choi, truyen vao tin hieu nguoi choi co muon choi tiep hay khong
 	void Begin();	//khoi dong game PvP
 	void BeginBOT();	//khoi dong game PvBOT
-	void Draw(int);	//Ve man hinh chao mung
+	//void Draw(int);	//Ve man hinh chao mung
 };
 

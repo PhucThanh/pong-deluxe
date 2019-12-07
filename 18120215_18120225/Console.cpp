@@ -27,10 +27,8 @@ Console::Console()
 	cfi.dwFontSize.Y = font_y;
 	cfi.FontFamily = FF_DONTCARE;
 	cfi.FontWeight = FW_NORMAL;
-	//Font chạy ổn định nhất: 
-	//wcscpy_s(cfi.FaceName, L"Courier new");
+	//Font chạy ổn định nhất: Lucida Console
 	wcscpy_s(cfi.FaceName, L"Lucida Console");
-	
 
 	//lấy con trỏ giữ màn hình
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
