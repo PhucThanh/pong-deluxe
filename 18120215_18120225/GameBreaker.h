@@ -10,6 +10,7 @@ class GameBreaker
 {
 	int bar_color = 9;
 	int ball_color=15;
+	int level = 1;
 	Bar bar;
 	Ball b;
 
@@ -19,6 +20,7 @@ class GameBreaker
 public:
 	GameBreaker();
 	void Restart();
+	void NextRound();
 	void BeforeStart(bool&);
 	void Begin();
 	void BeginBOT();

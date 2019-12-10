@@ -11,7 +11,7 @@ public:
 	float x, y;		//vi tri hien tai
 	int steps;
 	int dx, dy;
-
+	int ticks;
 	int x_previous, y_previous;	//x previous, y previous - vi tri cu
 	double sx, sy;	//speed x,y - toc do
 

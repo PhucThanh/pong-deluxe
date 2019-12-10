@@ -2,6 +2,19 @@
 Box::Box() 
 {
 	destroyed = false;
+	int r = rand() % 5;
+	if (r == 1)
+		pickUp.type = PickUp::Special::LONGER;
+	else if (r == 2)
+		pickUp.type = PickUp::Special::SHORTER;
+	else if (r == 3)
+		pickUp.type = PickUp::Special::SLOWER;
+	else
+	{
+		pickUp.type = PickUp::Special::NOTHING;
+		//pickUp.destroyed = true;//Dont update 
+	}
+	pickUp.type = PickUp::Special::SLOWER;
 }
 void Box::setPosition(int x, int y,int health,int width,int height) 
 {
@@ -10,8 +23,10 @@ void Box::setPosition(int x, int y,int health,int width,int height)
 	this->x = x;
 	this->y = y;
 	this->health = health;
+	
+	pickUp.setPosition(x, y, 7, 1);
 }
-void Box::Draw(int col) 
+void Box::Draw() 
 {
 	if (!destroyed)
 	{
@@ -30,6 +45,11 @@ void Box::Draw(int col)
 		Graphic::DrawRec(x + 1, y + height-1, x + width - 1, y + height-1, 205, col);//Botom box
 		Graphic::Draw(x + width-1, y + height-1, 188, col);//Bottom Right
 	}
+	else 
+	{
+		pickUp.Draw();
+	}
+	
 }
 void Box::BoxHitBall(Ball& b) 
 {
@@ -121,12 +141,18 @@ void Box::BoxHitBall(Ball& b)
 			health--;
 		}
 	}
-
-
-	if (health <= 0)
+	if (health == 0)
 	{
 		destroyed = true;
 		//Remove image
 		Graphic::DrawRec(x, y, x + width-1, y + height-1, ' ', 0);
+		health = -1;
+	}
+}
+void Box::PickUpHitBar(Ball &b,Bar& bar) 
+{
+	if (destroyed) 
+	{
+		pickUp.PickUpHitBar(b,bar);
 	}
 }

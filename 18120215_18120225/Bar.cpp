@@ -23,19 +23,23 @@ void Bar::GetKey(int left, int right)  //nhan tin hieu ban phim
 	{
 		isMovingLeft = true;
 	}
-	else if (GetAsyncKeyState(right)) //phim mui ten phai
+	else 
+	{
+		isMovingLeft = false;
+	}
+	
+	if (GetAsyncKeyState(right)) //phim mui ten phai
 	{
 		isMovingRight = true;
 	}
-	else//Khong bam phim nao het 
+	else
 	{
-		isMovingLeft = false;
 		isMovingRight = false;
 	}
 	if (isMovingLeft)
-		x -= 3;
+		x -= 2;
 	if (isMovingRight)
-		x += 3;
+		x += 2;
 }
 
 void Bar::HitBorder(int width)	//thanh truot cham bien

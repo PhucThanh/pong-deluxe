@@ -25,6 +25,9 @@
     <ClCompile Include="GameBreaker.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxManager.cpp" />
+    <ClCompile Include="Animate.cpp" />
+    <ClCompile Include="PickUp.cpp" />
+    <ClCompile Include="GiftBox.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -48,6 +51,9 @@
     <ClInclude Include="GameBreaker.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxManager.h" />
+    <ClInclude Include="Animate.h" />
+    <ClInclude Include="PickUp.h" />
+    <ClInclude Include="GiftBox.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

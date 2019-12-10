@@ -18,19 +18,15 @@ void Ball::set_Ball(int x1, int y1) //tao bong
 
 void Ball::Draw(int color)   //ve bong tren console
 {
-	//Graphic::Draw(round(x_previous), round(y_previous), ' ', 0);//Xóa vị trí cũ			
+	Graphic::Draw(round(x_previous), round(y_previous), ' ', 0);//Xóa vị trí cũ	
+	//Trait
 	Graphic::Draw(round(pastPost[0].first), round(pastPost[0].second), ' ', 0);//Xóa vị trí cũ
-	Graphic::Draw(round(pastPost[7].first), round(pastPost[7].second), 233, 12);//Xóa vị trí cũ
-	
-	//Graphic::Draw(round(x_previous), round(y_previous), 233, 4);//Past
+	Graphic::Draw(round(pastPost[7].first), round(pastPost[7].second), 248, 12);//Xóa vị trí cũ
+
 	Graphic::Draw(round(x), round(y), 233, 6);//233 : hình tròn
-	//Graphic::Draw(round(x_next), round(y_next), 233, 10);//Future
-					  //0: moi nhat
 
 	pastPost.push_back(pair<float, float>(x, y));
 	pastPost.erase(pastPost.begin());
-	
-	
 }
 void Ball::HitBar(Bar p1, Bar p2)    //doi huong khi cham vao thanh truot
 {
@@ -49,9 +45,7 @@ void Ball::HitBar(Bar p1, Bar p2)    //doi huong khi cham vao thanh truot
 		if (x > p2.x - p2.size && x < p2.x + p2.size)   //
 		{
 			sy *= -1;                                   //doi huong bong
-			//sx += float(x - p2.x) / 3;					//
 			y = p2.y + 1;								//set lai vi tri cua bong o phan tren cua thanh
-			//ChangeSpeed(sx * 1.1, sy * 1.1);
 		}
 	}
 }
@@ -60,19 +54,28 @@ void Ball::HitBarBottom(Bar p)
 {
 	if (y >= p.y - 1 && y <= p.y + 1)					//
 	{                                                  //bong cham vao thanh truot 1
-		if (x > p.x - p.size && x < p.x + p.size)  //
+		if (x >= p.x - p.size && x <= p.x + p.size)  //
 		{
 			dy *= -1;
 			y = p.y - 1;                              //set lai vi tri cua bong o phan tren cua thanh
 			if (p.isMovingLeft) 
 			{
-				dx -= 1;
+				dx -= 6;
+				
 			}
 			else if (p.isMovingRight) 
 			{
-				dx += 1;
+				dx += 6;
+				
 			}
-
+			if (dx == 12) //Slowdown goc 45
+			{
+				ticks = 35;
+			}
+			else
+			{
+				ticks = 15;
+			}
 		}
 	}
 }
