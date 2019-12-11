@@ -7,7 +7,7 @@ Box::Box()
 		pickUp.type = PickUp::Special::LONGER;
 	else if (r == 2)
 		pickUp.type = PickUp::Special::SHORTER;
-	else if (r == 30)
+	else if (r == 3)
 		pickUp.type = PickUp::Special::SLOWER;
 	else
 	{

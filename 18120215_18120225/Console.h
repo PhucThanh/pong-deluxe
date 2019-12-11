@@ -7,11 +7,12 @@ using namespace std;
 
 //physical console size
 static int console_width = 884;
-static int console_height = 790;
+static int console_height = 820;//790
 
 //So luong ky tu ngang va doc
 static int game_width = 72;//70 70
 static int game_height = 61;
+static int full_height = 65;
 static int full_width = 110;
 //Font chữ
 static int font_x = 0;//7 10

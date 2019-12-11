@@ -28,6 +28,33 @@ void TaskBar::draw_BorderTask(int x, int y, int width, int height, int col)
 }
 void TaskBar::draw_TaskBar()
 {
+	
+	//**************************
+	//			PHIA DUOI
+	//**************************
+	//Vach phan chia
+	Graphic::Draw(0, game_height, 186, 15);
+	Graphic::Draw(game_width / 3, game_height, 186, 15);
+	Graphic::Draw(game_width * 2/ 3, game_height, 186, 15);
+	Graphic::Draw(game_width-1, game_height, 186, 15);
+
+	//Bottom bar :
+	Graphic::Draw(0, game_height + 1, 200, 15);//Corner
+	Graphic::DrawRec(1, game_height + 1, game_width - 2, game_height + 1,205,15);//line
+	Graphic::Draw(game_width / 3, game_height + 1, 202, 15);//Nga ba
+	Graphic::Draw(game_width * 2/ 3, game_height + 1, 202, 15);//Nga ba
+	Graphic::Draw(game_width-1, game_height + 1, 188, 15);//Corner
+
+	//Ket noi game va task bar :
+	Graphic::Draw(0, game_height - 1, 204, 15);//BOT_LEFT
+	Graphic::Draw(game_width / 3, game_height - 1, 203, 15);
+	Graphic::Draw(game_width * 2 / 3, game_height - 1, 203, 15);
+	Graphic::Draw(game_width - 1, game_height - 1, 185, 15);//BOT_RIGHT
+
+
+	//**************************
+	//			BEN TRAI
+	//**************************
 	draw_BorderTask(game_width, 1, full_width - game_width - 1, 22, 15);
 	draw_BorderTask(game_width, 23, full_width - game_width - 1, 5, 15);
 	draw_BorderTask(game_width, 28, full_width - game_width - 1, 5, 15);

@@ -26,8 +26,8 @@ void Ball::Draw(int color)   //ve bong tren console
 	Graphic::Draw(round(x), round(y), 233, 6);//233 : hình tròn
 
 	//Display speed
-	Graphic::DrawRec(round(x_previous)+1, round(y_previous),round(x_previous)+2,round(y_previous), ' ', 0);//Xóa vị trí cũ	
-	Graphic::DrawString(round(x) + 1, round(y), to_string(ticks), 15);
+	//Graphic::DrawRec(round(x_previous)+1, round(y_previous),round(x_previous)+2,round(y_previous), ' ', 0);//Xóa vị trí cũ	
+	//Graphic::DrawString(round(x) + 1, round(y), to_string(ticks), 15);
 
 	pastPost.push_back(pair<float, float>(x, y));
 	pastPost.erase(pastPost.begin());
@@ -99,7 +99,7 @@ void Ball::HitBarBottom(Bar p)
 		
 			}
 
-			ticks = 10 / ((float)10 + n) * 50;
+			ticks = 10 / ((float)10 + n) * 50000;
 			n++;
 			//ticks /= 1.1;
 			if (dx == 12) //Slowdown goc 45,speed up goc khac

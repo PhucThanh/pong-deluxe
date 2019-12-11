@@ -5,7 +5,8 @@
 #include "Graphic.h"
 #include "BoxManager.h"
 #include "TaskBar.h"
-#include <ctime>
+#include <chrono>
+
 
 class GameBreaker
 {
@@ -21,7 +22,7 @@ class GameBreaker
 	BoxManager boxManager;
 	
 	bool start;		//hieu lenh kiem tra bat dau game hay chua
-	int current_time;//Time passed since start
+	unsigned long long int current_time;//Time passed since start
 public:
 	GameBreaker();
 	void Restart();
@@ -30,4 +31,3 @@ public:
 	void Begin();
 	void BeginBOT();
 };
-

@@ -5,17 +5,16 @@ SMALL_RECT Graphic::m_rectWindow;
 HANDLE Graphic::m_hConsole;
 Graphic::Graphic()
 {
-	m_bufScreen = new CHAR_INFO[full_width * game_height];//Cung cap bo nho
-	memset(m_bufScreen, 0, sizeof(CHAR_INFO)* full_width * game_height);//Set tat ca cac ô thành số 0: kí tự rỗng
-	m_rectWindow = { 0,0,short(full_width),short(game_height) };//Kich thuoc game
+	m_bufScreen = new CHAR_INFO[full_width * full_height];//Cung cap bo nho
+	memset(m_bufScreen, 0, sizeof(CHAR_INFO)* full_width * full_height);//Set tat ca cac ô thành số 0: kí tự rỗng
+	m_rectWindow = { 0,0,short(full_width),short(full_height) };//Kich thuoc game
 	m_hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 void Graphic::Update()
 {
 	//HANDLE m_hConsole;
 
-	WriteConsoleOutput(m_hConsole, m_bufScreen, { short(full_width),short(game_height) }, { 0,0 }, &m_rectWindow);
-
+	WriteConsoleOutput(m_hConsole, m_bufScreen, { short(full_width),short(full_height) }, { 0,0 }, &m_rectWindow);
 }
 void Graphic::ClearScr() 
 {
@@ -25,16 +24,11 @@ void Graphic::ClearScr()
 		{
 			Graphic::Draw(i, j, static_cast<char>(255), 0);
 		}
-	}
-	for (int i = 1; i < game_height - 1; ++i)
-	{
-		Graphic::Draw(full_width - 1, i, static_cast<char>(186), 15);
-	}
-	
+	}	
 }
 void Graphic::Draw(int x, int y, short c = 0x2588, short col = 0x000F)
 {
-	if (x >= 0 && x < full_width && y >= 0 && y < game_height)
+	if (x >= 0 && x < full_width && y >= 0 && y < full_height)
 	{
 		m_bufScreen[y * full_width + x].Char.AsciiChar = c;
 		m_bufScreen[y * full_width + x].Attributes = col;

@@ -87,7 +87,7 @@ void PickUp::PickUpHitBar(Ball& b,Bar& bar)
 				}
 				else if (type == Special::SLOWER) 
 				{
-					b.ticks = 50;
+					b.ticks = 50000;
 				}
 
 			}

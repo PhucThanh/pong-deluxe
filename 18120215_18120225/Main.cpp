@@ -11,8 +11,8 @@ int main()
 	Game G;		//Tao bien class Game
 	GameBreaker GB;	//Game Breaker
 	Menu m;		//Tao bien class Menu
-	TaskBar t;
-	t.draw_TaskBar();
+	//TaskBar t;
+	//t.draw_TaskBar();
 	//m.run_Menu();
 	//m.Intro();	//Hien intro
 	int l; //de dai thoi

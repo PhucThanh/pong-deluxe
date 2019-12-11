@@ -3,6 +3,8 @@
 int Menu::run_Menu()// ham chinh goi chay menu
 {
 	Intro();
+	TaskBar::draw_TaskBar();
+
 	cur = new MainMenu[MAX_MENU];//Khoi tao menu dau
 	input key = cur->GetKey();
 	int timeSinceBeginSnow = 0;
@@ -305,13 +307,15 @@ void Menu::DrawBorder(int color)		//Ve khung Game
 		Graphic::Draw(full_width - 1, i, COL, color);
 	}
 	Graphic::Draw(0, 0, TOP_LEFT, color);
-	Graphic::Draw(game_width - 1, 0, 203, color);
+	Graphic::Draw(game_width - 1, 0, TOP_RIGHT, color);
 	Graphic::Draw(full_width - 1, 0, TOP_RIGHT, color);
-	Graphic::Draw(0, game_height - 1, BOT_LEFT, color);
-	Graphic::Draw(game_width - 1, game_height - 1, 202, color);
+	Graphic::Draw(0, game_height - 1, BOT_LEFT, color);//BOT_LEFT
+	Graphic::Draw(game_width - 1, game_height - 1, BOT_RIGHT, color);//BOT_RIGHT
 	Graphic::Draw(full_width - 1, game_height - 1, BOT_RIGHT, color);
 
-	//Graphic::DrawString(game_width / 2 - 10, game_height / 2  - 5, "WELCOME TO OUR GAME!", color);
+	
+	
+															   //Graphic::DrawString(game_width / 2 - 10, game_height / 2  - 5, "WELCOME TO OUR GAME!", color);
 	//Graphic::Update();
 	//Graphic::DrawString(game_width / 2 - 10, game_height / 2 - 5, "                       ", color);//Xoa dong
 }
