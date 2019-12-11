@@ -1,10 +1,12 @@
 ﻿#pragma once
 #include <Windows.h>
 #include "Console.h"//For size only
+
 class Graphic//Quan ly draw
 {
 	static CHAR_INFO* m_bufScreen;//Con tro tuong duong voi tung pixel
 	static SMALL_RECT m_rectWindow;//Kich thuoc console
+	static HANDLE m_hConsole;
 public:
 	Graphic();
 	static void Update();//Update m_bufScreen vào console

@@ -87,12 +87,12 @@ void PickUp::PickUpHitBar(Ball& b,Bar& bar)
 				}
 				else if (type == Special::SLOWER) 
 				{
-					b.ticks += 90;
+					b.ticks = 50;
 				}
 
 			}
 		}
-		if ((int)y == game_height - 2)
+		if ((int)y == game_height - 4)
 			destroyed = true;	//out of bound
 		else
 			y += 0.2f;

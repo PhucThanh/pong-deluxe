@@ -4,9 +4,9 @@
 class Animate
 {
 public:
-	static void draw_Snow();
-	static void draw_Land();
-	static void draw_Tree(int, int);
+	static void draw_Snow();//Hieu ung tuyet
+	static void draw_Land();//Mat dat
+	static void draw_Tree(int, int);//Ve 1 cai cay voi toa do ngon x,y
 
 };
 

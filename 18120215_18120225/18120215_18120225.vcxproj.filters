@@ -22,12 +22,21 @@
     <ClCompile Include="Menu.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="GameBreaker.cpp" />
-    <ClCompile Include="Box.cpp" />
-    <ClCompile Include="BoxManager.cpp" />
-    <ClCompile Include="Animate.cpp" />
-    <ClCompile Include="PickUp.cpp" />
-    <ClCompile Include="GiftBox.cpp" />
+    <ClCompile Include="Animate.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBreaker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskBar.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h">
@@ -48,12 +57,24 @@
     <ClInclude Include="Menu.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="GameBreaker.h" />
-    <ClInclude Include="Box.h" />
-    <ClInclude Include="BoxManager.h" />
-    <ClInclude Include="Animate.h" />
-    <ClInclude Include="PickUp.h" />
-    <ClInclude Include="GiftBox.h" />
+    <ClInclude Include="Animate.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxManager.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBreaker.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskBar.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header">

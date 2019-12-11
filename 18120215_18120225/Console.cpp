@@ -92,12 +92,12 @@ void Console::HideCursor()			//xoa dau con tro
 void Console::DrawConsole(int color)		//tao console
 {
 	ChangeColorText(color);					//chon mau console
-	for (int i = 0; i < console_width + 1; ++i)
-		cout << '_';						//ve bien tren
+	//For (int i = 0; i < console_width + 1; ++i)
+		//cout << '_';						//ve bien tren
 	for (int i = 0; i < console_height - 1 ; ++i)
 	{
 		cout << endl << static_cast<char>(219) << static_cast<char>(219);		//ve bien trai
-		for (int i = 0; i < console_width - 3; ++i)		//dua con tro den bien phai
+		for (int i = 0; i < console_width -3 ; ++i)		//dua con tro den bien phai
 			cout << ' ';
 		cout << static_cast<char>(219) << static_cast<char>(219);				//ve bien phai
 	}

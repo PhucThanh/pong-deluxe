@@ -4,6 +4,13 @@ BoxManager::BoxManager()
 	box_width = 7;
 	box_height = 4;
 }
+BoxManager::~BoxManager()
+{
+	for (int i = 0;i < boxes.size();i++) 
+	{
+		delete[] boxes[i];
+	}
+}
 void BoxManager::CreateNewBox(int x, int y, int health,int width,int height) 
 {
 	//Box b;
@@ -39,7 +46,11 @@ void BoxManager::GenerateRandomBoxes(int n)
 		b->setPosition(box_x, box_y, box_health, box_width, box_height);//set box postion
 		b->col = 3 + rand() % 7;
 		boxes.push_back(b);//push box to list
-
+		
+		//Effect only
+		b->Draw();
+		Graphic::Update();
+		Sleep(20);
 	}
 	for (int i = 0;i < n-3;i++) 
 	{
@@ -48,7 +59,7 @@ void BoxManager::GenerateRandomBoxes(int n)
 		//Generate random health and positon
 		int box_x = 1+ box_width * (rand() % 10);//number 2 for border
 		int box_y = 1+ box_height * (rand() % 7);
-		int box_health = 1+rand() % 3;
+		int box_health = 1+rand() % 50;
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))
@@ -60,6 +71,10 @@ void BoxManager::GenerateRandomBoxes(int n)
 		b->col = 4 + rand() % 10;
 		boxes.push_back(b);//push box to list
 
+		//Only for effect
+		b->Draw();
+		Graphic::Update();
+		Sleep(20);
 	}
 }
 bool BoxManager::positionFree(int x, int y) 

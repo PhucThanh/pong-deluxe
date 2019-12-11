@@ -13,6 +13,7 @@ class BoxManager
 	int box_height;
 public:
 	BoxManager();
+	~BoxManager();
 	void CreateNewBox(int, int, int,int,int);//Create new box with x,y,health
 	void GenerateRandomBoxes(int);//Generate n boxes
 	void Draw();

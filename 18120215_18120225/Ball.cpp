@@ -25,6 +25,10 @@ void Ball::Draw(int color)   //ve bong tren console
 
 	Graphic::Draw(round(x), round(y), 233, 6);//233 : hình tròn
 
+	//Display speed
+	Graphic::DrawRec(round(x_previous)+1, round(y_previous),round(x_previous)+2,round(y_previous), ' ', 0);//Xóa vị trí cũ	
+	Graphic::DrawString(round(x) + 1, round(y), to_string(ticks), 15);
+
 	pastPost.push_back(pair<float, float>(x, y));
 	pastPost.erase(pastPost.begin());
 }
@@ -52,29 +56,59 @@ void Ball::HitBar(Bar p1, Bar p2)    //doi huong khi cham vao thanh truot
 
 void Ball::HitBarBottom(Bar p) 
 {
+	static int n = 0;
 	if (y >= p.y - 1 && y <= p.y + 1)					//
 	{                                                  //bong cham vao thanh truot 1
 		if (x >= p.x - p.size && x <= p.x + p.size)  //
 		{
-			dy *= -1;
+			dy *= -1;	//Banh doi nguoc len
 			y = p.y - 1;                              //set lai vi tri cua bong o phan tren cua thanh
-			if (p.isMovingLeft) 
+			//Co 3 goc :
+			//dx=3dy	: Goc ngang
+			//dx=dy		: Goc 45
+			//dx=dy/3	: Goc doc
+			//Gioi han	: dy/3 <= dx <= 3dy
+			//			: -dy/3 >= -dx >= -3dy
+			//Rut gon	: dy/3 <= | dx | <= 3dy
+
+			if (p.isMovingLeft) //bar dang di sang trai
 			{
-				dx -= 6;
-				
+				if (dx < 0)		//Neu bar di cung huong ball thi ball di ngang nhieu hon
+				{
+					if(abs(dx)<abs(3*dy))
+						dx *= 3;
+				}
+				else	//Neu bar di nguoc huong ball thi ball di doc hon
+				{
+					if (abs(dx) > abs(dy/3))
+						dx /= 3;
+				}
 			}
-			else if (p.isMovingRight) 
+			else if (p.isMovingRight) //bar dang di sang phai
 			{
-				dx += 6;
-				
+				if (dx > 0)
+				{
+					if (abs(dx) < abs(3 * dy))
+						dx *= 3;
+				}
+				else
+				{
+					if (abs(dx) > abs(dy / 3))
+						dx /= 3;
+				}
+		
 			}
-			if (dx == 12) //Slowdown goc 45
+
+			ticks = 10 / ((float)10 + n) * 50;
+			n++;
+			//ticks /= 1.1;
+			if (dx == 12) //Slowdown goc 45,speed up goc khac
 			{
-				ticks = 35;
+				ticks_multiply = 1.0f;
 			}
 			else
 			{
-				ticks = 15;
+				ticks_multiply = 1.0f;
 			}
 		}
 	}
@@ -88,7 +122,6 @@ void Ball::HitSideBorder(int& width, int& height)             //bong cham bien
 	}
 	else if (x >= width - 2) 
 	{													//bong cham bien phai
-		//sx *= -1;									    //doi huong bong
 		dx *= -1;
 		x = width - 2;                           //set lai vi tri bong o trong bien
 	}
@@ -113,31 +146,6 @@ void Ball::MaxSpeed(int v)		//Xu ly khi bong vuot qua toc do toi da
 	{
 		dx = -v;
 	}
-	/*if (dy > v)
-	{
-		dy = v;
-	}
-	else if (dy < v)
-	{
-		dy = -v;
-	}*/
-
-	//if (sx < -v)			//So sanh toc do hien tai voi v
-	//{
-	//	sx = -v;					// Cho toc do bang v
-	//}
-	//else if (sx > v)
-	//{
-	//	sx = v;
-	//}
-	//if (sy < -v)			//So sanh toc do hien tai voi v
-	//{
-	//	sy = -v;					// Cho toc do bang v
-	//}
-	//else if (sy > v)
-	//{
-	//	sy = v;
-	//}
 }
 void Ball::setToPrevious() 
 {

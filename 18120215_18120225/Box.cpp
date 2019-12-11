@@ -2,19 +2,18 @@
 Box::Box() 
 {
 	destroyed = false;
-	int r = rand() % 5;
+	int r = rand() % 7;
 	if (r == 1)
 		pickUp.type = PickUp::Special::LONGER;
 	else if (r == 2)
 		pickUp.type = PickUp::Special::SHORTER;
-	else if (r == 3)
+	else if (r == 30)
 		pickUp.type = PickUp::Special::SLOWER;
 	else
 	{
 		pickUp.type = PickUp::Special::NOTHING;
-		//pickUp.destroyed = true;//Dont update 
+		pickUp.destroyed = true;//Dont update 
 	}
-	pickUp.type = PickUp::Special::SLOWER;
 }
 void Box::setPosition(int x, int y,int health,int width,int height) 
 {
@@ -62,14 +61,16 @@ void Box::BoxHitBall(Ball& b)
 		//Cạnh
 		if ((b_y == y) && (b_x >= x + 1) && (b_x <= x + width-2))//Top bar
 		{
-			b.setToPrevious();
+			
 			b.dy *= -1;
+			b.setToPrevious();
 			health--;
 		}
 		else if ((b_y == y+height-1) && (b_x >= x + 1) && (b_x <= x+width-2))//Bottom bar
 		{
-			b.setToPrevious();
+			
 			b.dy *= -1;
+			b.setToPrevious();
 			health--;
 		}
 		else if ((b_x == x) && (b_y >= y + 1)&&(b_y<=y+height-2)) //Left bar
@@ -87,7 +88,7 @@ void Box::BoxHitBall(Ball& b)
 		//Góc
 		if (b_x == x && b_y == y) //Góc trái trên
 		{
-			b.setToPrevious();
+			
 			if (b_xp<x)//Den tu ben trai 
 			{
 				b.dx *= -1;
@@ -96,12 +97,13 @@ void Box::BoxHitBall(Ball& b)
 			{
 				b.dy *= -1;
 			}
+			b.setToPrevious();
 			health--;
 		}
 
 		if (b_x == x+width-1 && b_y == y) //Góc phải trên
 		{
-			b.setToPrevious();
+			
 			if (b_xp > x+width-1)//Den tu ben phai 
 			{
 				b.dx *= -1;
@@ -110,12 +112,13 @@ void Box::BoxHitBall(Ball& b)
 			{
 				b.dy *= -1;
 			}
+			b.setToPrevious();
 			health--;
 		}
 
 		if (b_x == x && b_y == y+height-1) //Góc trái dưới
 		{
-			b.setToPrevious();
+			
 			if (b_xp < x)//Den tu ben trai 
 			{
 				b.dx *= -1;
@@ -124,12 +127,13 @@ void Box::BoxHitBall(Ball& b)
 			{
 				b.dy *= -1;
 			}
+			b.setToPrevious();
 			health--;
 		}
 
 		if (b_x == x+width-1 && b_y == y+height-1) //Góc phải dưới
 		{
-			b.setToPrevious();
+			
 			if (b_xp > x + width - 1)//Den tu ben phai
 			{
 				b.dx *= -1;
@@ -138,6 +142,7 @@ void Box::BoxHitBall(Ball& b)
 			{
 				b.dy *= -1;
 			}
+			b.setToPrevious();
 			health--;
 		}
 	}
