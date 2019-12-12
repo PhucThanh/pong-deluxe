@@ -136,6 +136,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="PickUp.cpp" />
+    <ClCompile Include="Score.cpp" />
     <ClCompile Include="TaskBar.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="GiftBox.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Score.h" />
     <ClInclude Include="TaskBar.h" />
     <ClInclude Include="PickUp.h" />
   </ItemGroup>

@@ -2,7 +2,12 @@
 
 int Menu::run_Menu()// ham chinh goi chay menu
 {
-	Intro();
+	if (intro == false)
+	{
+		Intro();
+		intro = true;
+	}
+	
 	TaskBar::draw_TaskBar();
 
 	cur = new MainMenu[MAX_MENU];//Khoi tao menu dau
@@ -52,7 +57,26 @@ int Menu::run_Menu()// ham chinh goi chay menu
 					return 22;// 2: Game Pong, 1: Che do 2 nguoi
 				break;
 			case 2://HIGH SCORE
-				exit(1);
+			{
+				if (cur->pick == 1)
+				{
+					Score s;
+					Graphic::ClearScr();
+					while (!GetAsyncKeyState(VK_ESCAPE))
+					{
+						Graphic::DrawString(game_width / 3, game_height / 4 - 4, "TOP 10 BREAKER GAME SCORE", 14);
+						s.draw_HighScore();
+						Graphic::Update();
+					}
+
+					break;
+				}
+				else
+				{
+					//HighScore game pong
+					break;
+				}
+			}
 				break;
 			case 3://BACK TO MAIN
 				cur = new MainMenu();//Tao lai main menu
@@ -83,7 +107,22 @@ int Menu::run_Menu()// ham chinh goi chay menu
 			}
 			case 2:
 			{
-				//in how to play
+				Graphic::ClearScr();
+				while (!GetAsyncKeyState(VK_ESCAPE))
+				{
+					Graphic::DrawString(5 , game_height / 4 - 4, "> BREAKER GAME: ", 14);
+					Graphic::DrawString(5, game_height / 4 - 2, "Nguoi choi su dung cac phim mui ten de dieu khien thanh hung bong ", 15);
+					Graphic::DrawString(5, game_height / 4, "Bong va cham du so lan duoc ghi tren o se pha duoc o (+ 1d) ", 15);
+					Graphic::DrawString(5, game_height / 4 + 2, "Pha het cac hop qua cua mot Level de sang Level khac", 15);
+					Graphic::DrawString(5, game_height / 4 + 4, "Co vat pham an duoi cac hop qua, cung choi de kham pha nao!!!", 15);
+					Graphic::DrawString(5, game_height / 4 + 12, "> PONG GAME: ", 14);
+					Graphic::DrawString(5, game_height / 4 + 14, "Nguoi choi su dung cac phim mui ten de dieu khien thanh hung bong ", 15);
+					Graphic::DrawString(5, game_height / 4 + 16, "Co hai che do: 1 nguoi choi va 2 nguoi choi", 15);
+					Graphic::DrawString(7, game_height / 4 + 18, "+ Nguoi ngoi 1: mui ten trai, phai", 15);
+					Graphic::DrawString(7, game_height / 4 + 20, "+ Nguoi ngoi 2: A, D", 15);
+					Graphic::DrawString(5, game_height / 4 + 22, "Ben nao khong hung duong bong se thua, doi phuong se duoc +1d", 15);
+					Graphic::Update();
+				}
 				break;
 			}
 			case 3:
@@ -165,13 +204,30 @@ void Menu::update_Menu(input inkey)// thiet lap viec chon
 
 void Menu::Intro()
 {
+	DrawBorder(7);
+	Graphic::DrawString(game_width / 2 + 1, game_height / 3 - 1,"-------------------------", 15);
+	Graphic::DrawString(game_width / 2 , game_height / 3 , "|                         |", 15);
+	Graphic::DrawString(game_width / 2 + 1, game_height / 3 + 1, "-------------------------", 15);
+	Graphic::DrawString(game_width / 2 - 1, game_height / 3 + 2, "/", 15);
+	Graphic::DrawString(game_width / 3 , game_height / 3, " _-----_", 5);
+	Graphic::DrawString(game_width / 3 , game_height / 3 + 1, "|       |", 5);
+	Graphic::DrawString(game_width / 3 , game_height / 3 + 2, "|-------|", 5);
+	Graphic::DrawString(game_width / 3 - 1, game_height / 3 + 3, "'---------'", 5);
+	Graphic::DrawString(game_width / 3 , game_height / 3 + 4, "( _ 'v'_ )", 4);
+	Graphic::DrawString(game_width / 3 , game_height / 3 + 5, " /__\\/__\\", 10);
+	Graphic::DrawString(game_width / 3 - 2, game_height / 3 + 6, " ============", 8);
+	
+	
+	Animate::draw_AniString(game_width / 2 + 3, game_height / 3, "WELCOME TO OUR GAME!!!", 15);
 	for (int i = 1; i < 16; i++)
 	{
 		DrawBorder(i);
-		Sleep(70);
+		Sleep(80);
 		Graphic::Update();
 	}
-	DrawBorder(7);
+	
+	
+	
 }
 void Menu::DrawBlock32(int x, int y, int color)//Ve khoi cho chu
 {
@@ -226,8 +282,8 @@ void Menu::DrawIcon(int startx, int starty, int color)//ve chu P.B
 }
 void Menu::DrawMenu()
 {
-	DrawIcon(game_width / 5 - 1, game_height / 6, 15);
-	DrawIcon(game_width / 5 - 1, game_height / 6 - 1, 4);
+	DrawIcon(game_width / 5 , game_height / 6, 15);
+	DrawIcon(game_width / 5 , game_height / 6 - 1, 4);
 	DrawSelectMenu();
 }
 void Menu::DrawSelectMenu()

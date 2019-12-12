@@ -1,6 +1,7 @@
 ﻿#include "TaskBar.h"
 TaskBar::TaskBar()
 {
+	
 	//draw_BorderTask(game_width, 1, full_width - game_width - 1, 20, 15);
 }
 TaskBar::~TaskBar()
@@ -8,7 +9,7 @@ TaskBar::~TaskBar()
 	Graphic::ClearScr();
 }
 
-void TaskBar::draw_BorderTask(int x, int y, int width, int height, int col)
+/*void TaskBar::draw_BorderTask(int x, int y, int width, int height, int col)
 {
 	
 	for (int i = x ; i < x + width ; i++)
@@ -25,25 +26,25 @@ void TaskBar::draw_BorderTask(int x, int y, int width, int height, int col)
 	Graphic::Draw(x + width - 1, y, 191, col);//top right corner
 	Graphic::Draw(x, y + height - 1, 192, col);//Bottom Left
 	Graphic::Draw(x + width - 1, y + height - 1, 217, col);//Bottom Right
-}
+}*/
 void TaskBar::draw_TaskBar()
 {
-	
+
 	//**************************
 	//			PHIA DUOI
 	//**************************
 	//Vach phan chia
 	Graphic::Draw(0, game_height, 186, 15);
 	Graphic::Draw(game_width / 3, game_height, 186, 15);
-	Graphic::Draw(game_width * 2/ 3, game_height, 186, 15);
-	Graphic::Draw(game_width-1, game_height, 186, 15);
+	Graphic::Draw(game_width * 2 / 3, game_height, 186, 15);
+	Graphic::Draw(game_width - 1, game_height, 186, 15);
 
 	//Bottom bar :
 	Graphic::Draw(0, game_height + 1, 200, 15);//Corner
-	Graphic::DrawRec(1, game_height + 1, game_width - 2, game_height + 1,205,15);//line
+	Graphic::DrawRec(1, game_height + 1, game_width - 2, game_height + 1, 205, 15);//line
 	Graphic::Draw(game_width / 3, game_height + 1, 202, 15);//Nga ba
-	Graphic::Draw(game_width * 2/ 3, game_height + 1, 202, 15);//Nga ba
-	Graphic::Draw(game_width-1, game_height + 1, 188, 15);//Corner
+	Graphic::Draw(game_width * 2 / 3, game_height + 1, 202, 15);//Nga ba
+	Graphic::Draw(game_width - 1, game_height + 1, 188, 15);//Corner
 
 	//Ket noi game va task bar :
 	Graphic::Draw(0, game_height - 1, 204, 15);//BOT_LEFT
@@ -51,11 +52,11 @@ void TaskBar::draw_TaskBar()
 	Graphic::Draw(game_width * 2 / 3, game_height - 1, 203, 15);
 	Graphic::Draw(game_width - 1, game_height - 1, 185, 15);//BOT_RIGHT
 
-
+}
 	//**************************
 	//			BEN TRAI
 	//**************************
-	draw_BorderTask(game_width, 1, full_width - game_width - 1, 22, 15);
+	/*draw_BorderTask(game_width, 1, full_width - game_width - 1, 22, 15);
 	draw_BorderTask(game_width, 23, full_width - game_width - 1, 5, 15);
 	draw_BorderTask(game_width, 28, full_width - game_width - 1, 5, 15);
 	draw_BorderTask(game_width, 33, full_width - game_width - 1, 27, 15);
@@ -78,6 +79,8 @@ void TaskBar::draw_TaskBar_Game()
 	Graphic::DrawString(game_width + 2, 36, "  | | / _` || '_|/ _` |/ -_)|  _|", 12);
 	Graphic::DrawString(game_width + 2, 37, "  |_| \\__,_||_|  \\__, |\\___| \\__|", 12);
 	Graphic::DrawString(game_width + 2, 38, "                 |___/           ", 12);
+	
+	 
 }
 void TaskBar::draw_Game_Level(int level) 
 {
@@ -122,4 +125,4 @@ void TaskBar::draw_BigNumber(int number, int x, int y)
 	case 9:
 		break;
 	}
-}
+}*/

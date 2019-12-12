@@ -35,7 +35,7 @@ void BoxManager::GenerateRandomBoxes(int n)
 		//Generate random health and positon
 		int box_x = 1 + box_width * (rand() % 10);//number 2 for border
 		int box_y = 1 + box_height * (rand() % 2);
-		int box_health = 1 + rand() % 4;
+		int box_health = 1 + rand() % 3;
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))
@@ -59,7 +59,7 @@ void BoxManager::GenerateRandomBoxes(int n)
 		//Generate random health and positon
 		int box_x = 1+ box_width * (rand() % 10);//number 2 for border
 		int box_y = 1+ box_height * (rand() % 7);
-		int box_health = 1+rand() % 20;
+		int box_health = 1+rand() % 2;
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))
@@ -104,6 +104,16 @@ void BoxManager::updateBoxes(Ball& b, Bar& bar)
 	{
 		(*boxes[i]).PickUpHitBar(b,bar);
 	}
+}
+int BoxManager::count_DestroyedBox()
+{
+	int count = 0;
+	for (int i = 0; i < boxes.size(); i++)
+	{
+		if ((*boxes[i]).destroyed)
+			count++;
+	}
+	return count;
 }
 bool BoxManager::Win() 
 {

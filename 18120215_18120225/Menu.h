@@ -1,6 +1,7 @@
 #pragma once
 #include "TaskBar.h"
 #include "Animate.h"
+#include "Score.h"
 //#include <vector>
 #include <string>
 #define MAX_MENU 4
@@ -29,7 +30,7 @@ protected:
 	int current_time = 0;//So tick den thoi gian hien tai
 	bool pressed = true;//kiem tra xem phim da bam hay chua
 	int pick;//he so phan biet cac menu: 0: main menu, 1: menu breaker game, 2: menu pong
-
+	int intro = false;//intro chi chay 1 lan dau game
 public:
 	Menu() {};
 	~Menu() { delete[] cur; };

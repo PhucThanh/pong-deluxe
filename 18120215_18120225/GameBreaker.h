@@ -4,6 +4,7 @@
 #include "Box.h"
 #include "Graphic.h"
 #include "BoxManager.h"
+#include "Score.h"
 #include "TaskBar.h"
 #include <chrono>
 
@@ -20,7 +21,7 @@ class GameBreaker
 	Bar bar;
 	Ball b;
 	BoxManager boxManager;
-	
+	Score _score;
 	bool start;		//hieu lenh kiem tra bat dau game hay chua
 	unsigned long long int current_time;//Time passed since start
 public:

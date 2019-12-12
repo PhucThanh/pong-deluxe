@@ -41,10 +41,19 @@ void Animate::draw_Land()
 			Graphic::Draw( i , j, static_cast<char>(239), 10);
 		}
 	}
-	for (int i = 3; i < 60; i+=4)
+	for (int i = 3; i < game_width - 4; i+=4)
 	{
 		draw_Tree(i, 53);
 		//Graphic::Draw(rand() % (game_width - 2) + 1, game_height - (rand() % ((game_height / 8) - 2) + 4), static_cast<char>(176), 6);
 	}
 	
+}
+void Animate::draw_AniString(int x, int y, string s,int col)
+{
+	for (int i = 0; i < s.length(); i++)
+	{
+		Graphic::Draw(x + i, y, s[i], col);
+		Sleep(50);
+		Graphic::Update();
+	}
 }

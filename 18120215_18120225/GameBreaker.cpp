@@ -1,6 +1,7 @@
 #include "GameBreaker.h"
 GameBreaker::GameBreaker() 
 {
+	
 	start = false;	//Game chua bat dau
 	bar.set_Bar(game_width / 2, game_height - 10, 12);	//Set thanh truot o giua san
 	b.set_Ball(game_width / 2 , game_height -11);	//Set bong o giua san
@@ -28,13 +29,14 @@ void GameBreaker::BeforeStart(bool& Check)
 		Graphic::DrawRec(game_width / 2 - 12, int(game_height / 2) + 3, game_width / 2 - 12 + 21, int(game_height / 2) + 4, ' ', 0);
 		Check = false;	// Ket thuc
 	}
-	TaskBar::draw_TaskBar_Game();
+	//TaskBar::draw_TaskBar_Game();
 	Graphic::Update();
 	
 	//UI DRAWING
-	Graphic::DrawString(1, game_height, "Level :", 15);
-	Graphic::DrawString(9, game_height, to_string(level), 15);
-	Graphic::DrawString(game_width/3+1, game_height, "Scores :", 15);
+	Graphic::DrawString(game_width / 3 + 1, game_height, "LEVEL :", 15);
+	Graphic::DrawString(game_width / 3 + 9, game_height, to_string(level), 15);
+	Graphic::DrawString(game_width * 2 / 3 + 1, game_height, "Your score :", 15);
+	Graphic::DrawString(1, game_height, "Best score :", 15);
 }
 void GameBreaker::Restart() 
 {
@@ -113,6 +115,7 @@ void GameBreaker::Begin()
 				{
 					NextRound();
 				}
+				_score.update_Score(boxManager); //update diem
 				boxManager.Draw();	//Ve obstacle
 				bar.Draw(bar_color);	//Ve thanh truot
 				timeSinceLastUpdate_Bar = current_time + timeBetweentUpdate_Bar;
@@ -129,4 +132,6 @@ void GameBreaker::Begin()
 			timeSinceLastUpdates_Graphic = current_time + timeBetweenUpdates;//Update sau so ticks. SO ticks can nho ball cang nhanh
 		}
 	}
+	_score.draw_HighScore();
+	
 }
