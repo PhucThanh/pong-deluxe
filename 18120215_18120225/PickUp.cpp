@@ -40,11 +40,19 @@ void PickUp::Draw()
 			Graphic::DrawString(x+2, y, "Slow", col);
 			Graphic::Draw(x, y+1, 174, col);
 			Graphic::DrawString(x + 2, y+1, "Ball", col);
+		}else if (type == Special::AMMOES) //Make ball slower
+		{
+			col = 10;
+			Graphic::Draw(x+1, y, 239, col);
+			Graphic::Draw(x+1, y+1, 219, col);
+			Graphic::DrawString(x + 2, y, "++",col);
+
 		}
 	}
 	else 
 	{
 		Graphic::DrawRec(xp, yp, xp + 6, yp+1, ' ', 0);//Remove after destroyed
+		y += 100;//Push it somewhere far away
 	}
 	xp = x;
 	yp = y;
@@ -80,7 +88,7 @@ void PickUp::PickUpHitBar(Ball& b,Bar& bar)
 				}else if (type == Special::SHORTER)
 				{
 					Graphic::DrawRec(int(bar.x) - bar.size, int(bar.y), int(bar.x) + bar.size - 1, int(bar.y), ' ', 0);//Xoa bar tam thoi
-					if (bar.size > 1)
+					if (bar.size > 5)
 					{
 						bar.size--;
 					}
@@ -88,11 +96,17 @@ void PickUp::PickUpHitBar(Ball& b,Bar& bar)
 				else if (type == Special::SLOWER) 
 				{
 					b.ticks = 50000;
+					b.speed_level = 0;
+				}
+				else if (type == Special::AMMOES) 
+				{
+					if (bar.ammoes < 5)
+						bar.ammoes+=1+rand()%2;
 				}
 
 			}
 		}
-		if ((int)y == game_height - 4)
+		if ((int)y == game_height - 5)
 			destroyed = true;	//out of bound
 		else
 			y += 0.2f;

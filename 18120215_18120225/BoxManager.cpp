@@ -24,7 +24,7 @@ void BoxManager::Draw()
 		(*boxes[i]).Draw();
 	}
 }
-void BoxManager::GenerateRandomBoxes(int n) 
+void BoxManager::GenerateRandomBoxes(int n,int level) 
 {
 	boxes.clear();
 	//Gift Box
@@ -35,7 +35,7 @@ void BoxManager::GenerateRandomBoxes(int n)
 		//Generate random health and positon
 		int box_x = 1 + box_width * (rand() % 10);//number 2 for border
 		int box_y = 1 + box_height * (rand() % 2);
-		int box_health = 1 + rand() % 4;
+		int box_health = 1 + rand() % level;
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))
@@ -59,7 +59,7 @@ void BoxManager::GenerateRandomBoxes(int n)
 		//Generate random health and positon
 		int box_x = 1+ box_width * (rand() % 10);//number 2 for border
 		int box_y = 1+ box_height * (rand() % 7);
-		int box_health = 1+rand() % 20;
+		int box_health = 1+rand() % (level+1);
 
 		//Loop until find free x,y
 		while (!positionFree(box_x, box_y))

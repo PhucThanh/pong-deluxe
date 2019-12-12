@@ -1,6 +1,6 @@
 #include "Bar.h"
 
-void Bar::set_Bar(int x1, int y1, int size1)   //tao thanh truot
+void Bar::setPosition(int x1, int y1, int size1)   //tao thanh truot
 {
 	isMovingLeft = isMovingRight = false;
 	x = float(x1);           //dua gia tri x1 vao x
@@ -53,4 +53,8 @@ void Bar::HitBorder(int width)	//thanh truot cham bien
 		x = float(width - size-1);		//thanh truot o nguyen vi tri
 	}
 
+}
+void Bar::Shoot() 
+{
+	
 }

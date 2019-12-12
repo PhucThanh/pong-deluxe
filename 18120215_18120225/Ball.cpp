@@ -1,24 +1,31 @@
 ﻿#include "Ball.h"
 
-void Ball::set_Ball(int x1, int y1) //tao bong
+void Ball::setPosition(int x1, int y1) //tao bong
 {
 	x = x1;  //dua gia tri x1 vao x
 	y = y1;  //dua gia tri y1 vao y
 
 	x_previous = x;         //set vi tri cu
 	y_previous = y;         //set vi tri cu
-	sx = sy = 0;    //toc do ban dau
 
-	pastPost.resize(8);//Trait
+	//Trait
+	pastPost.resize(8);
 	for (int i = 0;i < pastPost.size();i++) 
 	{
 		pastPost[i] = pair<float, float>(x, y);
 	}
 }
-
+void Ball::Clear() 
+{
+	for (int i = 0;i < pastPost.size();i++) 
+	{
+		Graphic::Draw(round(pastPost[i].first), round(pastPost[i].second), ' ', 0);
+	}
+}
 void Ball::Draw(int color)   //ve bong tren console
 {
-	Graphic::Draw(round(x_previous), round(y_previous), ' ', 0);//Xóa vị trí cũ	
+	//Graphic::Draw(round(x_previous), round(y_previous), ' ', 0);//Xóa vị trí cũ	
+	
 	//Trait
 	Graphic::Draw(round(pastPost[0].first), round(pastPost[0].second), ' ', 0);//Xóa vị trí cũ
 	Graphic::Draw(round(pastPost[7].first), round(pastPost[7].second), 248, 12);//Xóa vị trí cũ
@@ -56,7 +63,6 @@ void Ball::HitBar(Bar p1, Bar p2)    //doi huong khi cham vao thanh truot
 
 void Ball::HitBarBottom(Bar p) 
 {
-	static int n = 0;
 	if (y >= p.y - 1 && y <= p.y + 1)					//
 	{                                                  //bong cham vao thanh truot 1
 		if (x >= p.x - p.size && x <= p.x + p.size)  //
@@ -99,16 +105,16 @@ void Ball::HitBarBottom(Bar p)
 		
 			}
 
-			ticks = 10 / ((float)10 + n) * 50000;
-			n++;
+			ticks = 10 / ((float)10 + speed_level) * 60000;
+			speed_level++;
 			//ticks /= 1.1;
-			if (dx == 12) //Slowdown goc 45,speed up goc khac
+			if (abs(dx) == 3 || abs(dx)==abs(dy/3)) //Slowdown goc 45,speed up goc khac
 			{
 				ticks_multiply = 1.0f;
 			}
 			else
 			{
-				ticks_multiply = 1.0f;
+				ticks_multiply = 0.7f;
 			}
 		}
 	}

@@ -2,13 +2,15 @@
 Box::Box() 
 {
 	destroyed = false;
-	int r = rand() % 7;
-	if (r == 1)
+	int r = rand() % 10;
+	if (r == 0)
 		pickUp.type = PickUp::Special::LONGER;
-	else if (r == 2)
+	else if (r == 1)
 		pickUp.type = PickUp::Special::SHORTER;
-	else if (r == 3)
+	else if (r == 2)
 		pickUp.type = PickUp::Special::SLOWER;
+	else if (r == 3)
+		pickUp.type = PickUp::Special::AMMOES;
 	else
 	{
 		pickUp.type = PickUp::Special::NOTHING;
@@ -24,6 +26,10 @@ void Box::setPosition(int x, int y,int health,int width,int height)
 	this->health = health;
 	
 	pickUp.setPosition(x, y, 7, 1);
+	if (pickUp.type == PickUp::Special::AMMOES)
+	{
+		pickUp.setPosition(x, y, 3, 1);
+	}
 }
 void Box::Draw() 
 {
@@ -64,26 +70,26 @@ void Box::BoxHitBall(Ball& b)
 			
 			b.dy *= -1;
 			b.setToPrevious();
-			health--;
+			health-=b.damage;
 		}
 		else if ((b_y == y+height-1) && (b_x >= x + 1) && (b_x <= x+width-2))//Bottom bar
 		{
 			
 			b.dy *= -1;
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 		else if ((b_x == x) && (b_y >= y + 1)&&(b_y<=y+height-2)) //Left bar
 		{
 			b.dx *= -1;
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 		else if ((b_x == x+width-1) && (b_y >= y + 1) && (b_y <= y + height - 2))//Right bar
 		{
 			b.dx *= -1;
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 		//Góc
 		if (b_x == x && b_y == y) //Góc trái trên
@@ -98,7 +104,7 @@ void Box::BoxHitBall(Ball& b)
 				b.dy *= -1;
 			}
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 
 		if (b_x == x+width-1 && b_y == y) //Góc phải trên
@@ -113,7 +119,7 @@ void Box::BoxHitBall(Ball& b)
 				b.dy *= -1;
 			}
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 
 		if (b_x == x && b_y == y+height-1) //Góc trái dưới
@@ -128,7 +134,7 @@ void Box::BoxHitBall(Ball& b)
 				b.dy *= -1;
 			}
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 
 		if (b_x == x+width-1 && b_y == y+height-1) //Góc phải dưới
@@ -143,15 +149,15 @@ void Box::BoxHitBall(Ball& b)
 				b.dy *= -1;
 			}
 			b.setToPrevious();
-			health--;
+			health -= b.damage;
 		}
 	}
-	if (health == 0)
+	if (health <= 0 && health >-100000 && !destroyed)
 	{
 		destroyed = true;
 		//Remove image
 		Graphic::DrawRec(x, y, x + width-1, y + height-1, ' ', 0);
-		health = -1;
+		health = -100000;
 	}
 }
 void Box::PickUpHitBar(Ball &b,Bar& bar) 

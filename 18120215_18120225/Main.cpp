@@ -24,20 +24,20 @@ int main()
 		switch (l)	//Xet gia tri moi nhap vao cua lenh
 		{
 		case 11:
-			//Xoa menu
-			//Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
-			//G.Begin();		//Bat dau tro choi PvP
+			//Game Breaker
 			GB.Begin();
 			break;
 		case 12:
+			//Game Breaker Bot
 			system("pause");
 			break;
 		case 21:
+			//Pong pvp
 			G.Begin();
 			break;
 		case 22:
-			//Graphic::DrawRec(29, 12, 50, 19, ' ', 0);
-			G.BeginBOT();	//Bat dau tro choi vs BOT
+			//Pong pve
+			G.BeginBOT();
 			break;
 		
 		}

@@ -55,10 +55,10 @@ void TaskBar::draw_TaskBar()
 	//**************************
 	//			BEN TRAI
 	//**************************
-	draw_BorderTask(game_width, 1, full_width - game_width - 1, 22, 15);
+	/*draw_BorderTask(game_width, 1, full_width - game_width - 1, 22, 15);
 	draw_BorderTask(game_width, 23, full_width - game_width - 1, 5, 15);
 	draw_BorderTask(game_width, 28, full_width - game_width - 1, 5, 15);
-	draw_BorderTask(game_width, 33, full_width - game_width - 1, 27, 15);
+	draw_BorderTask(game_width, 33, full_width - game_width - 1, 27, 15);*/
 }
 void TaskBar::draw_TaskBar_Game() 
 {

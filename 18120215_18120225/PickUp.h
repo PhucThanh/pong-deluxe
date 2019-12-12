@@ -14,14 +14,11 @@ public:
 	enum class Special 
 	{
 		NOTHING,
-		EXTRA_BALL,
 		LONGER,
 		SHORTER,
 		SLOWER,
-		SPEED_UP,
-		SPEED_DOWN,
-		SUPER_BALL,
-		GUN
+		AMMOES,
+		LIVES,
 	};
 	Special  type;
 	PickUp();
