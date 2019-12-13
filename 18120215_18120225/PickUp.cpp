@@ -101,7 +101,7 @@ void PickUp::PickUpHitBar(Ball& b,Bar& bar)
 				else if (type == Special::AMMOES) 
 				{
 					if (bar.ammoes < 5)
-						bar.ammoes+=1+rand()%2;
+						bar.ammoes+=1;
 				}
 
 			}

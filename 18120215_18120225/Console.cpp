@@ -16,7 +16,7 @@ Console::Console()
 
 	/*http://www.cplusplus.com/forum/beginner/95699/*/
 	/* Cấu hình vị trí cửa sổ trên màn hình */
-	SetWindowPos(consoleWindow, 0, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+	SetWindowPos(consoleWindow, 0, 30, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 
 	/*https://stackoverflow.com/questions/33975912/how-to-set-console-font-to-raster-font-programmatically*/
 	/* Cấu hình font của cửa sổ để hiện phần tên game ổn định */
@@ -24,6 +24,32 @@ Console::Console()
 	cfi.cbSize = sizeof cfi;
 	cfi.nFont = 0;
 	cfi.dwFontSize.X = font_x;
+	
+	cout << "Type the font size you want :"<<endl;
+	cout << "-------------------------------" << endl;
+	cout << "1. Small" << endl;
+	cout << "2. Normal" << endl;
+	cout << "3. Large" << endl;
+	char choice=_getch();
+	cout << "<Loading please wait...>" << endl;
+	Sleep(1000);
+
+	switch (choice)
+	{
+	case '1':
+		font_y = 11;
+		break;
+	case '2':
+		font_y = 12;
+		break;
+	case '3':
+		font_y = 13;
+		break;
+	default:
+		font_y = 12;
+		break;
+	}
+
 	cfi.dwFontSize.Y = font_y;
 	cfi.FontFamily = FF_DONTCARE;
 	cfi.FontWeight = FW_NORMAL;

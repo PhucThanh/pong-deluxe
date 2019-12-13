@@ -53,9 +53,32 @@ void Graphic::DrawRec(int x1, int y1, int x2, int y2, short c = 0x2588, short co
 }
 void Graphic::goToXY(int x, int y)
 {
-	HANDLE h = NULL;
-	if (!h)
-		h = GetStdHandle(STD_OUTPUT_HANDLE);
+	//HANDLE h = NULL;
+	//if (!h)
+		//h = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD c = { x, y };
-	SetConsoleCursorPosition(h, c);
+	SetConsoleCursorPosition(m_hConsole, c);
+}
+void Graphic::DrawBox(int x, int y, int x2, int y2, int col)
+{
+	Graphic::DrawRec(x, y, x2, y2, ' ',0);//fill black
+
+	Graphic::DrawRec(x, y, x2, y, 205, col);//top
+	Graphic::DrawRec(x, y2, x2, y2, 205, col);//bottom
+	Graphic::DrawRec(x, y, x, y2, 186, col);//left
+	Graphic::DrawRec(x2, y, x2, y2, 186, col);//right
+	/*for (int i = x; i < x + width; i++)
+	{
+		Graphic::Draw(i, y, 196, 15);
+		Graphic::Draw(i, y + height - 1, 196, 15);
+	}
+	for (int i = y; i < y + height; i++)
+	{
+		Graphic::Draw(x, i, 179, 15);
+		Graphic::Draw(x + width - 1, i, 179, 15);
+	}*/
+	Graphic::Draw(x, y, 201, col);//top left corner
+	Graphic::Draw(x2, y, 187, col);//top right corner
+	Graphic::Draw(x, y2, 200, col);//Bottom Left
+	Graphic::Draw(x2, y2, 188, col);//Bottom Right
 }

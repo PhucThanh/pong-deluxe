@@ -20,6 +20,8 @@ public:
 	bool positionFree(int, int);//Return true if x,y free
 	void BallHitBoxes(Ball&);
 	void updateBoxes(Ball&, Bar&);
+	int count_DestroyedBox();
 	bool Win();
+	friend class Score;
 };
 

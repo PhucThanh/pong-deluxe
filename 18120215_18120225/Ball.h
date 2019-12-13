@@ -35,6 +35,7 @@ public:
 	void HitSideBorder(int&, int&);	//doi huong khi bong cham vao bien, input la chieu rong va chieu cao cua ban do choi
 	void MaxSpeed(int);			//Xu li khi bong vuot qua toc do toi da, input la max speed
 	void HitBarBottom(Bar);
+	void HitBarTop(Bar);
 	void HitSideTopBorder(int&, int&);
 	void setToPrevious();//Set current position to previous
 };

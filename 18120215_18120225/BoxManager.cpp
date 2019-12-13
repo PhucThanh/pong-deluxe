@@ -26,7 +26,13 @@ void BoxManager::Draw()
 }
 void BoxManager::GenerateRandomBoxes(int n,int level) 
 {
-	boxes.clear();
+	for (int i = 0;i < boxes.size();i++)//Free all box if there is any
+	{
+		if(boxes[i])
+			delete[] boxes[i];
+	}
+	boxes.resize(0);
+
 	//Gift Box
 	number_of_gift = 2;
 	for (int i = 0;i < number_of_gift;i++)
@@ -104,6 +110,16 @@ void BoxManager::updateBoxes(Ball& b, Bar& bar)
 	{
 		(*boxes[i]).PickUpHitBar(b,bar);
 	}
+}
+int BoxManager::count_DestroyedBox()
+{
+	int count = 0;
+	for (int i = 0; i < boxes.size(); i++)
+	{
+		if ((*boxes[i]).destroyed)
+			count++;
+	}
+	return count;
 }
 bool BoxManager::Win() 
 {

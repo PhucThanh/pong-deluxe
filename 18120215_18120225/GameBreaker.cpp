@@ -11,8 +11,8 @@ void GameBreaker::BeforeStart(bool& ESCAPE)
 	//Man hinh cho truoc khi bat dau. Bam phim space de choi hoac ESC de thoat
 	//Draw truoc nhung gi can hien thi
 
-	Graphic::DrawString(game_width / 2 - 12, int(game_height / 2) + 3, "Press <space> to start",10);
-	Graphic::DrawString(game_width / 2 - 12, int(game_height / 2) + 5, " Press <ESC> to exit",12);
+	Graphic::DrawString(game_width / 2 - 12, int(game_height / 2) + 5, "Press <space> to start",10);
+	Graphic::DrawString(game_width / 2 - 12, int(game_height / 2) + 7, " Press <ESC> to exit",12);
 	bar.Draw(bar_color);	//Ve thanh truot
 	b.Draw(ball_color);		//Ve Ball
 
@@ -40,18 +40,36 @@ void GameBreaker::BeforeStart(bool& ESCAPE)
 		Graphic::ClearScr();
 		ESCAPE = true;
 	}
-
-	//UI PRE-DRAWING
-	Graphic::DrawString(1, game_height, "Level :", 15);
-	Graphic::DrawString(9, game_height, to_string(level), 15);
-	Graphic::DrawString(game_width/3+1, game_height, "Scores :", 15);
-	DrawHealthAmmoes();
+	Graphic::Update();
+	
+	//UI DRAWING
+	Graphic::DrawString(game_width / 3 + 1, game_height, "LEVEL :", 15);
+	Graphic::DrawString(game_width / 3 + 9, game_height, to_string(level), 15);
+	Graphic::DrawString(game_width * 2 / 3 + 1, game_height, "Your score :", 15);
+	Graphic::DrawString(1, game_height, "Best score :", 15);
 }
+
 void GameBreaker::Restart() 
 {
+	level = 1;
+	ball_pause = true;	//Pause the ball
+	Graphic::DrawString(9, game_height, to_string(level), 15);	//Update level in UI
 
+	playing = false;	//Game chua bat dau
+
+	Graphic::DrawRec(int(bar.x) - bar.size, int(bar.y), int(bar.x) + bar.size - 1, int(bar.y), ' ', 0);//Xoa bar cu
+	bar.setPosition(game_width / 2, game_height - 10, bar.size);	//Set thanh truot o giua san
+
+
+	//Khoi tao lai cac thong so cho ball
+	b.setPosition(game_width / 2 - 1, game_height - 11);	//Set bong o giua san
+	b.ticks = 60000;	//Reset ball ticks
+	b.ticks_multiply = 1.0f;
+	b.speed_level = 0;	//Reset speed level
+	b.dx = 3;	//Ball's direction
+	b.dy = -3;	//Ball's direction
 }
-static bool ball_pause = true;
+
 void GameBreaker::NextRound() //QUA MAN CHOI KE TIEP
 {
 	level++;	//Level increase
@@ -67,18 +85,19 @@ void GameBreaker::NextRound() //QUA MAN CHOI KE TIEP
 	//Khoi tao lai cac thong so cho ball
 	b.setPosition(game_width / 2 - 1, game_height - 11);	//Set bong o giua san
 	b.ticks = 60000;	//Reset ball ticks
+	b.ticks_multiply = 1.0f;
 	b.speed_level = 0;	//Reset speed level
 	b.dx = 3;	//Ball's direction
 	b.dy = -3;	//Ball's direction
 
 }
-void GameBreaker::Begin() 
+void GameBreaker::Begin(bool BOT) 
 {
 	//dx,dy : Huong di ban dau
 	b.dx = -3;
 	b.dy = -3;
 	b.ticks = 60000;//So ticks khi bat dau
-
+	lives = 3;
 	bool ESCAPE = false;	//Bien kiem tra xem nguoi choi co muon thoat game hay khong
 
 	unsigned long long int timeSinceLastUpdate_Ball = 0;	//Thoi gian tu lan update ball cuoi cung
@@ -186,53 +205,67 @@ void GameBreaker::Begin()
 
 			if (current_time > timeSinceLastUpdate_Bar)
 			{
+				if (GetAsyncKeyState(VK_ESCAPE))	//Nhan phim ESC
+				{
+					//Force losing
+					lives = 0;
+					b.y = game_height + 10;
+					Lose();
+					Graphic::ClearScr();
+					ESCAPE = true;
+				}
+
+
 				boxManager.updateBoxes(b, bar);	//Kiem tra va cham item va thanh
 				DrawHealthAmmoes();//Phong khi nhat duoc ammoes thi update
 
-				bar.GetKey(VK_LEFT, VK_RIGHT);	//Input thanh truot
-
-				float bar_dx = float(b.x - bar.x) / 8.0f;
-				if (bar_dx > 0) 
+				if (BOT)	//BOT LOGIC
 				{
-					if (rand() % 100 > 70)
+					float bar_dx = float(b.x - bar.x) / 8.0f;
+					if (bar_dx > 0)
 					{
-						bar.isMovingRight = true;
-						bar.isMovingLeft = false;
+						if (rand() % 100 > 70)
+						{
+							bar.isMovingRight = true;
+							bar.isMovingLeft = false;
+						}
+						else
+						{
+							bar.isMovingLeft = true;
+							bar.isMovingRight = false;
+						}
+
+					}
+					else if (bar_dx < 0)
+					{
+						if (rand() % 100 > 70)
+						{
+							bar.isMovingLeft = true;
+							bar.isMovingRight = false;
+						}
+						else
+						{
+							bar.isMovingRight = true;
+							bar.isMovingLeft = false;
+						}
 					}
 					else
 					{
-						bar.isMovingLeft = true;
-						bar.isMovingRight = false;
-					}
-
-				}
-				else if (bar_dx < 0)
-				{
-					if (rand() % 100 > 70)
-					{
-						bar.isMovingLeft = true;
-						bar.isMovingRight = false;
-					}
-					else
-					{
-						bar.isMovingRight = true;
 						bar.isMovingLeft = false;
+						bar.isMovingRight = false;
 					}
+					if (b.y > game_height / 2 - 5)
+						bar.x += bar_dx;
 				}
-				else 
-				{
-					bar.isMovingLeft = false;
-					bar.isMovingRight = false;
-				}
-				if(b.y>game_height/2-5 )
-					bar.x +=bar_dx;
-
+				else
+					bar.GetKey(VK_LEFT, VK_RIGHT);	//Input thanh truot - NOT BOT
 
 				bar.HitBorder(game_width);		//Thanh truot cham bien
 				if (boxManager.Win()) //Khong con gift
 				{
 					NextRound();
 				}
+				_score.update_Score(boxManager,level); //update diem
 				boxManager.Draw();	//Ve obstacle
 				bar.Draw(bar_color);	//Ve thanh truot
 				timeSinceLastUpdate_Bar = current_time + timeBetweentUpdate_Bar;
@@ -242,12 +275,21 @@ void GameBreaker::Begin()
 		{
 			BeforeStart(ESCAPE);				//Man hinh truoc khi game bat dau
 		}
-
+		
 		if (current_time > timeSinceLastUpdates_Graphic)
 		{
 			Graphic::Update();	//Update Graphic
 			timeSinceLastUpdates_Graphic = current_time + timeBetweenUpdates;
 		}
+	}
+
+	while (!GetAsyncKeyState(VK_ESCAPE))
+	{
+		Graphic::ClearScr();
+		Graphic::DrawString(game_width / 3, game_height / 4 - 4, "TOP 10 BREAKER GAME SCORE", 14);
+		_score.draw_HighScore();
+		Graphic::DrawString(game_width / 3, game_height - 10, "PRESS ESC TO RETURN TO MAIN MENU");
+		Graphic::Update();
 	}
 }
 
@@ -255,7 +297,8 @@ void GameBreaker::Lose()
 {
 	if (b.y >= game_height - 2) //Ball out of bound
 	{
-		if (lives > 0)
+		
+		if (lives > 1)
 		{
 			//Lose 1 life
 			lives--;
@@ -267,6 +310,7 @@ void GameBreaker::Lose()
 			b.dy = -3;
 			b.dx = -3;
 			b.ticks = 60000;
+			b.ticks_multiply = 1.0f;
 			b.speed_level = 0;
 
 			//Update UI for lives
@@ -276,6 +320,10 @@ void GameBreaker::Lose()
 		else 
 		{
 			//Lose game
+			_score.update_HighScore();
+			_score.reset_Score();
+			Restart();
+			playing = false;
 		}
 	}
 }

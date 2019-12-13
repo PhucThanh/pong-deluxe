@@ -37,8 +37,15 @@
     <ClCompile Include="TaskBar.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="GiftBox.cpp" />
-    <ClCompile Include="PickUp.cpp" />
+    <ClCompile Include="GiftBox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PickUp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -78,8 +85,15 @@
     <ClInclude Include="TaskBar.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="GiftBox.h" />
-    <ClInclude Include="PickUp.h" />
+    <ClInclude Include="PickUp.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GiftBox.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Header</Filter>
+    </ClInclude>
     <ClInclude Include="Bullet.h" />
   </ItemGroup>
   <ItemGroup>

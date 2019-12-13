@@ -107,8 +107,64 @@ void Ball::HitBarBottom(Bar p)
 
 			ticks = 10 / ((float)10 + speed_level) * 60000;
 			speed_level++;
-			//ticks /= 1.1;
 			if (abs(dx) == 3 || abs(dx)==abs(dy/3)) //Slowdown goc 45,speed up goc khac
+			{
+				ticks_multiply = 1.0f;
+			}
+			else
+			{
+				ticks_multiply = 0.7f;
+			}
+		}
+	}
+}
+void Ball::HitBarTop(Bar p)
+{
+	if (y >= p.y - 1 && y <= p.y + 1)					//
+	{                                                  //bong cham vao thanh truot 1
+		if (x >= p.x - p.size && x <= p.x + p.size)  //
+		{
+			dy *= -1;	//Banh doi nguoc xuong
+			y = p.y + 1;                              //set lai vi tri cua bong o phan tren cua thanh
+			//Co 3 goc :
+			//dx=3dy	: Goc ngang
+			//dx=dy		: Goc 45
+			//dx=dy/3	: Goc doc
+			//Gioi han	: dy/3 <= dx <= 3dy
+			//			: -dy/3 >= -dx >= -3dy
+			//Rut gon	: dy/3 <= | dx | <= 3dy
+
+			if (p.isMovingLeft) //bar dang di sang trai
+			{
+				if (dx < 0)		//Neu bar di cung huong ball thi ball di ngang nhieu hon
+				{
+					if (abs(dx) < abs(3 * dy))
+						dx *= 3;
+				}
+				else	//Neu bar di nguoc huong ball thi ball di doc hon
+				{
+					if (abs(dx) > abs(dy / 3))
+						dx /= 3;
+				}
+			}
+			else if (p.isMovingRight) //bar dang di sang phai
+			{
+				if (dx > 0)
+				{
+					if (abs(dx) < abs(3 * dy))
+						dx *= 3;
+				}
+				else
+				{
+					if (abs(dx) > abs(dy / 3))
+						dx /= 3;
+				}
+
+			}
+
+			ticks = 10 / ((float)10 + speed_level) * 60000;
+			speed_level++;
+			if (abs(dx) == 3 || abs(dx) == abs(dy / 3)) //Slowdown goc 45,speed up goc khac
 			{
 				ticks_multiply = 1.0f;
 			}

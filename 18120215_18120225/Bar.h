@@ -14,7 +14,7 @@ public:
 	float sx;			//speed x - toc do
 	int size;			//chieu dai thanh truot
 
-	int ammoes=10;
+	int ammoes=0;
 
 	int lives = 3;
 

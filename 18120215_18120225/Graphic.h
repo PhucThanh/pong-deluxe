@@ -15,5 +15,6 @@ public:
 	static void DrawString(int, int, string, short col = 0x000F);//vẽ string tại x,y, màu col
 	static void DrawRec(int, int, int, int, short, short);//Ve hình chữ nhật với các tọa độ
 	static void goToXY(int, int);
+	static void DrawBox(int x, int y, int width, int height, int col);
 };
 
